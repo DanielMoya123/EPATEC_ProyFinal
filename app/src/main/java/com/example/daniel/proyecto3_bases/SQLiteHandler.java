@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+
+
 /**
  * Created by ferllini13 on 14/11/2016.
  */
@@ -32,7 +34,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return SQLiteHandler;
     }
 
-    public void addUser() {
+    public void addUser(User user) {
         ContentValues values = new ContentValues();
 
         values.put("Nombre", "");
