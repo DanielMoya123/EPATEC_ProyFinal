@@ -5,7 +5,7 @@ package com.example.daniel.proyecto3_bases;
  */
 
 public class Category {
-    public final String table="Category";
+    public final String table="CATEGORY";
     public String _id;
     public String _description;
 

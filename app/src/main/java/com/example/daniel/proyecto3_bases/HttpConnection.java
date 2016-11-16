@@ -10,7 +10,6 @@ import java.net.URL;
 public class HttpConnection {
     String urls ="http://webserviceepatec.azurewebsites.net/EPATEC.asmx/Parsear?frase=";
 
-
     public String request(String msj) {
 
         try {
