@@ -34,7 +34,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return SQLiteHandler;
     }
 
-    public void addUser(User user) {
+    public void addUser() {
         ContentValues values = new ContentValues();
 
         values.put("Nombre", "");
