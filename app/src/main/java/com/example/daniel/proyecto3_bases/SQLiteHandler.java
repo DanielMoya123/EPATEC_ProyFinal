@@ -2,10 +2,12 @@ package com.example.daniel.proyecto3_bases;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import org.json.*;
-
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ferllini13 on 14/11/2016.
@@ -178,6 +180,43 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_description",cate._description);
         insertData(cate.table, values);
     }
+    public void addRol(String id, String descrip){
+        ContentValues values = new ContentValues();
+
+        values.put("_id", id);
+        values.put("_description",descrip);
+        insertData("ROL", values);
+
+    }
+
+    public void addProvidersPro(String prov,String rol){
+        ContentValues values = new ContentValues();
+
+        values.put("_providerId", prov);
+        values.put("_productId",rol);
+        insertData("PROVIDER_PRODUCTS", values);
+    }
+
+    public void addUseRol(String usr,String rol){
+        ContentValues values = new ContentValues();
+
+        values.put("_user_id", usr);
+        values.put("rol_id",rol);
+        insertData("USER_ROL", values);
+    }
+
+
+    public void addOrderPro(String wish,String pro,int cant){
+        ContentValues values = new ContentValues();
+        values.put("_wishId", wish);
+        values.put("_productId",pro);
+        values.put("numberOfProducts",cant);
+        insertData("WISH_PRODUCTS", values);
+
+    }
+
+
+
 
     public void UpSyncronize() throws JSONException {
         UpUsers();
@@ -227,8 +266,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     }
 
-
-
     public boolean UpCategory() throws JSONException {
         String query="listar/categorias";
         String ans=GET.request(query);
@@ -247,7 +284,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         JSONArray jsonArray = new JSONArray(ans);
         for(int i=0;i<jsonArray.length();i++){
             JSONObject item=jsonArray.getJSONObject(i);
-            addCategory(new Category(item.getString("_id"),item.getString("_description")));
+            addProvidersPro(item.getString("_providerId"),item.getString("_productId"));
         }
         return true;
     }
@@ -258,7 +295,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         JSONArray jsonArray = new JSONArray(ans);
         for(int i=0;i<jsonArray.length();i++){
             JSONObject item=jsonArray.getJSONObject(i);
-            addCategory(new Category(item.getString("_id"),item.getString("_description")));
+            addRol(item.getString("_id"),item.getString("_description"));
         }
         return true;
     }
@@ -269,7 +306,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         JSONArray jsonArray = new JSONArray(ans);
         for(int i=0;i<jsonArray.length();i++){
             JSONObject item=jsonArray.getJSONObject(i);
-            addCategory(new Category(item.getString("_id"),item.getString("_description")));
+            addUseRol(item.getString("_user_id"),item.getString("rol_id"));
         }
         return true;
     }
@@ -280,11 +317,80 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         JSONArray jsonArray = new JSONArray(ans);
         for(int i=0;i<jsonArray.length();i++){
             JSONObject item=jsonArray.getJSONObject(i);
-            addCategory(new Category(item.getString("_id"),item.getString("_description")));
+            addOrderPro(item.getString("_wishId"),item.getString("_productId"),item.getInt("numberOfProducts"));
         }
         return true;
     }
 
+    public List<Users> getUsers(){
+        List<Users> usrl = new ArrayList<Users>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query="SELECT * FROM GENERAL_USER";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Users usr = new Users(cursor.getString(cursor.getColumnIndex("_id")),
+                        cursor.getString(cursor.getColumnIndex("_name")),
+                        cursor.getString(cursor.getColumnIndex("_lastName1")),
+                        cursor.getString(cursor.getColumnIndex("_lastName2")),
+                        cursor.getString(cursor.getColumnIndex("_cellPhone")),
+                        cursor.getString(cursor.getColumnIndex("_identityNumber")),
+                        cursor.getString(cursor.getColumnIndex("_username")),
+                        cursor.getString(cursor.getColumnIndex("_password")),
+                        cursor.getString(cursor.getColumnIndex("_birthDate")),
+                        cursor.getString(cursor.getColumnIndex("_office")),
+                        cursor.getString(cursor.getColumnIndex("_residenceAddress")),
+                        cursor.getString(cursor.getColumnIndex("penalty")));
+
+                usrl.add(usr);
+            } while (cursor.moveToNext());
+        }
+
+        db.close();
+        return usrl;
+    }
+
+    public List<Products> getProducts(){
+        List<Products> prod = new ArrayList<Products>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query="SELECT * FROM PRODUCT";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Products pro = new Products(cursor.getString(cursor.getColumnIndex("_id")),
+                        false,
+                        cursor.getString(cursor.getColumnIndex("_office")),
+                        cursor.getString(cursor.getColumnIndex("_description")),
+                        cursor.getString(cursor.getColumnIndex("_categoryId")),
+                        cursor.getInt(cursor.getColumnIndex("_amount")),
+                        cursor.getInt(cursor.getColumnIndex("price")));
+
+                prod.add(pro);
+            } while (cursor.moveToNext());
+        }
+
+        db.close();
+        return prod;
+    }
+
+
+    public List<Category> getCategories() {
+        List<Category> cate = new ArrayList<Category>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM CATEGORY";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Category cat = new Category(cursor.getString(cursor.getColumnIndex("_id")),
+                        cursor.getString(cursor.getColumnIndex("_description")));
+
+                cate.add(cat);
+            } while (cursor.moveToNext());
+        }
+            db.close();
+            return cate;
+
+    }
 
 
     public void insertData (String table  ,ContentValues content) {
