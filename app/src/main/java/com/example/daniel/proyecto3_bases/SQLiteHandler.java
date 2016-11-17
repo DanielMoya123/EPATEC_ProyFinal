@@ -393,6 +393,30 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
 
+    public void delUser(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM CATEGORY";
+        db.rawQuery(query, null);
+    }
+
+    public void delCategory(String id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM CATEGORY";
+        db.rawQuery(query, null);
+    }
+
+    public void delProduct(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM CATEGORY";
+        db.rawQuery(query, null);
+    }
+    public void delOrder(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM CATEGORY";
+        db.rawQuery(query, null);
+    }
+
+
     public void insertData (String table  ,ContentValues content) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(table, null, content);
