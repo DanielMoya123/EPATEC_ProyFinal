@@ -36,9 +36,28 @@
             android:label="@string/title_activity_about"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.ABOUT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.daniel.proyecto3_bases.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SIGN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.daniel.proyecto3_bases.LoginActivity" />
         </activity>
     </application>
 

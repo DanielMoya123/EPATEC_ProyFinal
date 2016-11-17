@@ -90,11 +90,23 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
+        Button mSignUpButton = (Button) findViewById(R.id.sign_up_button);
+        mSignUpButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goSignUp();
+            }
+        });
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 
-
+    private void goSignUp() {
+        showProgress(true);
+        Intent intent2 = new Intent(this, SignUpActivity.class);
+        startActivity(intent2);
+    }
 
 
     /**
