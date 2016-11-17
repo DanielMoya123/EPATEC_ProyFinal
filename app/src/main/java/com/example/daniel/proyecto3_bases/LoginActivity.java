@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity{
             focusView = mUserView;
             cancel = true;
         } else if (!isUserValid(user)) {
-            mUserView.setError(getString(R.string.error_invalid_email));
+            mUserView.setError("Usuario valido (debe ser más de 4 digitos)");
             focusView = mUserView;
             cancel = true;
         }
@@ -160,9 +160,9 @@ public class LoginActivity extends AppCompatActivity{
         }
     }
 
-    private boolean isUserValid(String email) {
+    private boolean isUserValid(String user) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return user.length() > 4;
     }
 
     private boolean isPasswordValid(String password) {

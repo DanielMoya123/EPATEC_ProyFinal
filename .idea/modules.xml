@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EPATEC_ProyFinal.iml" filepath="$PROJECT_DIR$/EPATEC_ProyFinal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Proyecto3-bases.iml" filepath="$PROJECT_DIR$/Proyecto3-bases.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

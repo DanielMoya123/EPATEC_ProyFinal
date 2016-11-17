@@ -41,6 +41,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.daniel.proyecto3_bases.MainActivity" />
@@ -55,9 +56,19 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.daniel.proyecto3_bases.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".CartActivity"
+            android:label="@string/title_activity_cart"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.daniel.proyecto3_bases.MainActivity" />
         </activity>
     </application>
 
