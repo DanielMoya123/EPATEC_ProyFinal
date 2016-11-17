@@ -393,26 +393,71 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
 
-    public void delUser(){
+    public void delUser(String userID){
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM CATEGORY";
+        String query = "delete from USER_ROL\n" +
+                "\t\twhere _user_id = "+ userID+"\n" +
+                "\n" +
+                "\t\tdelete from GENERAL_USER\n" +
+                "\t\twhere " + userID +" = _id";
         db.rawQuery(query, null);
     }
 
     public void delCategory(String id){
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM CATEGORY";
+        String query = "update PRODUCT\n" +
+                "set _categoryId = '0'\n" +
+                "where _id in (Select _id from PRODUCT\n" +
+                "\twhere _categoryId =" + id +")\n" +
+                "\n" +
+                "delete from CATEGORY\n" +
+                "where _id ="+ id;
         db.rawQuery(query, null);
     }
 
-    public void delProduct(){
+    public void delProduct(String id){
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM CATEGORY";
+        String query = "delete from PROVIDER_PRODUCTS\n" +
+                "\t\twhere _productId ="+ id+"\n" +
+                "\n" +
+                "\t\tdelete from WISH_PRODUCTS\n" +
+                "\t\twhere _productId = "+id+"\n" +
+                "\n" +
+                "\t\tdelete from PRODUCT\n" +
+                "\t\twhere _id =" +id;
         db.rawQuery(query, null);
     }
-    public void delOrder(){
+    public void delOrder(String id){
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM CATEGORY";
+        String query = "update PRODUCT\n" +
+                "set _amount = _amount + (select WP.numberOfProducts from WISH_PRODUCTS as WP where WP._wishId ="+ id+")\n" +
+                "where _id in (select WP._productId from WISH_PRODUCTS as WP where WP._wishId ="+ id+")\n" +
+                "\n" +
+                "\n" +
+                "delete from WISH_PRODUCTS\n" +
+                "where _wishId ="+ id+"\n" +
+                "delete from WISH\n" +
+                "where _id ="+ id;
+        db.rawQuery(query, null);
+    }
+
+    public void delProvider(String id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "delete from PROVIDER_PRODUCTS\n" +
+                "where _productId in (select _productId\n" +
+                "\tfrom PROVIDER_PRODUCTS\n" +
+                "\twhere _providerId ="+id+")\n" +
+                "\n" +
+                "delete from PRODUCT\n" +
+                "where _id in (select _productId\n" +
+                "\tfrom PROVIDER_PRODUCTS\n" +
+                "\twhere _providerId ="+ id+")\n" +
+                "\n" +
+                "delete from USER_ROL\n" +
+                "where _user_id ="+ id+"\n" +
+                "\n" +
+                "delete from GENERAL_USER\n" +
+                "where _id ="+id;
         db.rawQuery(query, null);
     }
 
