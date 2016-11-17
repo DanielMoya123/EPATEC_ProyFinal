@@ -180,6 +180,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_description",cate._description);
         insertData(cate.table, values);
     }
+
     public void addRol(String id, String descrip){
         ContentValues values = new ContentValues();
 
@@ -214,9 +215,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         insertData("WISH_PRODUCTS", values);
 
     }
-
-
-
 
     public void UpSyncronize() throws JSONException {
         UpUsers();
@@ -460,7 +458,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 "where _id ="+id;
         db.rawQuery(query, null);
     }
-
 
     public void insertData (String table  ,ContentValues content) {
         SQLiteDatabase db = this.getWritableDatabase();
