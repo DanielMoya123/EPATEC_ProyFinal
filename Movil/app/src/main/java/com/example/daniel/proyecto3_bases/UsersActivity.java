@@ -50,12 +50,16 @@ public class UsersActivity extends AppCompatActivity {
             e.printStackTrace();
         } */
 
-        List listUsers;
+        List<Category> listUsers;
+        List listUsersFinal = null;
         listUsers = SQLite.getCategories();
+        for (int i=0; i<listUsers.size(); i++) {
+            listUsersFinal.add(listUsers.get(i)._description);
+        }
 
         ListView listCart = (ListView)findViewById(R.id.allUsers);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsers);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsersFinal);
         listCart.setAdapter(adapter);
 
         Spinner dropdown = (Spinner)findViewById(R.id.spinnerClient);
