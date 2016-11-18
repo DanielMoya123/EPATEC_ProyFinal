@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -59,7 +60,7 @@ public class UsersActivity extends AppCompatActivity {
             listUsersFinal.add(listUsers.get(i)._description);
         }
 
-        ListView listCart = (ListView)findViewById(R.id.allUsers);
+        ExpandableListView listCart = (ExpandableListView)findViewById(R.id.allUsers);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsersFinal);
         listCart.setAdapter(adapter);

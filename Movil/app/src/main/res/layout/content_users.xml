@@ -23,10 +23,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ListView
+            <ExpandableListView
                 android:id="@+id/allUsers"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="wrap_content"></ExpandableListView>
 
             <TextView
                 android:text="Create a new user"
