@@ -28,10 +28,7 @@ public class UsersActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SQLiteHandler SQLite = new SQLiteHandler(this);
-
-        Category categoria = new Category("123","prueba");
-        SQLite.addCategory(categoria);
-        /*
+/*
         try {
             SQLite.UpSyncronize();
         } catch (JSONException e) {
@@ -39,8 +36,7 @@ public class UsersActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-*/
+        } */
 
         List listUsers;
         listUsers = SQLite.getCategories();
