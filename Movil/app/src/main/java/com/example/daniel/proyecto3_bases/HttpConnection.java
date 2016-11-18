@@ -20,26 +20,27 @@ public class HttpConnection {
             con.setRequestMethod("GET");
             con.setConnectTimeout(5000);
 
-            System.out.println(msj);
+            System.out.println("MENSAJE es: " + msj);
 
-            int responseCode = con.getResponseCode();
+            //int responseCode = con.getResponseCode();
             System.out.println("\nSending 'GET' request to URL : " + url);
-            System.out.println("Response Code : " + responseCode);
+            //System.out.println("Response Code : " + responseCode);
 
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
+            System.out.println("Intermedio2");
             String inputLine;
             StringBuffer response = new StringBuffer();
-
+            System.out.println("Intermedio");
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
             in.close();
 
             //print result
-            System.out.println(response.toString());
+            System.out.println("Response es: " + response.toString());
             String response2 = response.substring(68, response.length()-9);
-            System.out.println(response2);
+            System.out.println("Esta es la response filtrada: " + response2);
             return response2;
 
         }catch (Exception e) {

@@ -19,9 +19,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public SQLiteHandler(Context ctx){
         super(ctx,"DB",null,1);
+        GET = new HttpConnection();
     }
     public void onCreate(SQLiteDatabase db) {
-        String query="CREATE TABLE GENERAL_USER\n" +
+        System.out.println("Entra al create");
+        /*String query="CREATE TABLE GENERAL_USER\n" +
                 "(\n" +
                 "  _id TEXT UNIQUE NOT NULL,\n" +
                 "  _name TEXT NOT NULL,\n" +
@@ -112,7 +114,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 "    CONSTRAINT productWFK FOREIGN KEY (_productId)\n" +
                 "      REFERENCES PRODUCT (_id),\n" +
                 "\tCONSTRAINT wish_productPK PRIMARY KEY (_wishId,_productId)\n" +
-                ");";
+                ");";*/
+        String query = "CREATE TABLE CATEGORY (_id TEXT UNIQUE PRIMARY KEY, _description TEXT );";
         db.execSQL(query);
     }
 
@@ -125,6 +128,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (SQLiteHandler == null){
             SQLiteHandler = new SQLiteHandler(context);
         }
+
         return SQLiteHandler;
     }
 
@@ -216,7 +220,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     }
 
-    public void UpSyncronize() throws JSONException {
+    public void UpSyncronize() throws JSONException, InterruptedException {
         UpUsers();
         UpProducts();
         UpOrders();
@@ -229,10 +233,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
 
 
-    public boolean UpUsers() throws JSONException {
+    public boolean UpUsers() throws JSONException, InterruptedException {
 
         String query="listar/clientes";
         String ans=GET.request(query);
+        wait(1000);
+        System.out.println("ans es: " + ans);
         JSONArray jsonArray = new JSONArray(ans);
         for(int i=0;i<jsonArray.length();i++){
             JSONObject item=jsonArray.getJSONObject(i);
@@ -326,6 +332,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         String query="SELECT * FROM GENERAL_USER";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
+
             do {
                 Users usr = new Users(cursor.getString(cursor.getColumnIndex("_id")),
                         cursor.getString(cursor.getColumnIndex("_name")),
@@ -460,6 +467,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void insertData (String table  ,ContentValues content) {
         SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println("Content: " + content.toString());
         db.insert(table, null, content);
     }
 }

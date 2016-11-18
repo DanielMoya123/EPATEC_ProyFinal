@@ -28,20 +28,26 @@ public class UsersActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SQLiteHandler SQLite = new SQLiteHandler(this);
-        SQLiteDatabase SQLiteDB = SQLite.getReadableDatabase();
+
+        Category categoria = new Category("123","prueba");
+        SQLite.addCategory(categoria);
+        /*
         try {
             SQLite.UpSyncronize();
         } catch (JSONException e) {
             Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+*/
 
-        List listUsarios;
-        listUsarios = SQLite.getUsers();
+        List listUsers;
+        listUsers = SQLite.getCategories();
 
         ListView listCart = (ListView)findViewById(R.id.allUsers);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsarios);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsers);
         listCart.setAdapter(adapter);
 
 
