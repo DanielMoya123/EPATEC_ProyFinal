@@ -70,6 +70,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.daniel.proyecto3_bases.MainActivity" />
         </activity>
+        <activity
+            android:name=".UsersActivity"
+            android:label="@string/title_activity_users"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.daniel.proyecto3_bases.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.daniel.proyecto3_bases"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="25" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="EPATEC"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.daniel.proyecto3_bases.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN2" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.daniel.proyecto3_bases.LoginActivity"
+            android:label="@string/title_activity_login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.daniel.proyecto3_bases.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName="com.example.daniel.proyecto3_bases.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.ABOUT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.daniel.proyecto3_bases.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.daniel.proyecto3_bases.SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:parentActivityName="com.example.daniel.proyecto3_bases.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.SIGN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.daniel.proyecto3_bases.LoginActivity" />
+        </activity>
+        <activity
+            android:name="com.example.daniel.proyecto3_bases.CartActivity"
+            android:label="@string/title_activity_cart"
+            android:parentActivityName="com.example.daniel.proyecto3_bases.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.daniel.proyecto3_bases.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>

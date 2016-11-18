@@ -13,8 +13,24 @@
             android:title="About" />
     </group>
 
+    <group android:id="@+id/groupMaintenance" android:checkableBehavior="single">
+        <item android:title="Maintenance">
+            <menu>
+                <item
+                    android:id="@+id/nav_all_users"
+                    android:title="All Users" />
+                <item
+                    android:id="@+id/nav_all_categories"
+                    android:title="All Categories" />
+                <item
+                    android:id="@+id/nav_all_products"
+                    android:title="All Products" />
+            </menu>
+        </item>
+    </group>
 
-    <group android:id="@+id/group2" android:checkableBehavior="single">
+
+    <group android:id="@+id/groupLogout" android:checkableBehavior="single">
         <item
             android:id="@+id/nav_logout"
             android:title="Log Out" />

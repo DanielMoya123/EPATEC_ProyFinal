@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/transition/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0c6d948e6cb9ea6f535d175fb61ba2930719c0e9">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-transition-25.0.0_9c8e065ab0c750c5258f58ea6ad4dfcc025ab986/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.0_bff9b3d0da5d6258e04877a585f323e759e74c2d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.0_edc1aea7cc7009e4e1699b073d3d3b464dad4be0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1958d35f841ca855edc18c9210e8b500f44b1de7">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_647bee9daa954e65b98a197ab5b4cf51f344d162/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_03b4097ee0e84d2c4c6d7649278965ff1b85b4d1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_e51a111f4e9730451918691f3d204222f6306829/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.0/support-annotations-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a22d2cc94da87b254451fa8ed28afc30b4653773">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.0_ed3b96e243849d7a974bb478de7ca7762b696962/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/design/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="26384be22ddc74cfe197ebda9edbc7d1fd8bd537">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-25.0.0_f014dc65939c2c246d277695cee5b5d3ffa258c1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5e497d60f0cb6ce87c458ac5420a46d0fed49bd0">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.0.0_a509dc826d59bed5c26c184bdf52f5d066cc0214/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.0_aa20056bb32838ff2bf0e32f342d3c6353716f9a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_bd9e7422f9fb96da0aabaf7f8328f3bf976b9a81/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.0_afffff5341bc8f32bf7bc2bd6520af0991475193/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.0_2edeb6aad4814f7eadfd2ca2112acddf46870656/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.0_0013ebb3c89e88bc3d35110d0ab3da263396c166/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_c8e212918292fc4bd9ce7dfa109748ec5ba5a268/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.0_8074ac8ab54f2e349fbd8ee708a4bc5f74d0f619/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="07daa0b6e1d455c82a38422ffe287c18823d339a">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.0.0_d8e44308fede577c19c41d9ac75be9b53590e275/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_d5e58a2eee78768b6b200dd582caadc84aa06124/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.0.0_7e49a97879a36cbe2294a2fa427c14c1e66036ba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a714acac1a1a1835c24b97888dd45071a9149828">
+        <dex dex="/home/daniel/AndroidStudioProjects/Proyecto3-bases/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_f55c13b1f681be584e837512f384f51d87af72f6/classes.dex" />
+    </item>
+
+</items>
