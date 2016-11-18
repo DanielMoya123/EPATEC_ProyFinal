@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.view.ViewGroup;
 
 import org.json.JSONException;
 
@@ -60,10 +60,27 @@ public class UsersActivity extends AppCompatActivity {
             listUsersFinal.add(listUsers.get(i)._description);
         }
 
-        ExpandableListView listCart = (ExpandableListView)findViewById(R.id.allUsers);
+        ListView listCart = (ListView)findViewById(R.id.allUsers);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsersFinal);
         listCart.setAdapter(adapter);
+
+        int totalHeight = 0;
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listCart.getWidth(), View.MeasureSpec.AT_MOST);
+        for (int i = 0; i < adapter.getCount(); i++) {
+            View listItem = adapter.getView(i, null, listCart);
+            listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listCart.getLayoutParams();
+        params.height = totalHeight + (listCart.getDividerHeight() * (adapter.getCount() - 1));
+        listCart.setLayoutParams(params);
+        listCart.requestLayout();
+
+
+
+
 
         Spinner dropdown = (Spinner)findViewById(R.id.spinnerClient);
         String[] clients = new String[]{"prueba1", "prueba2", "prueba3"};

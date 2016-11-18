@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Bundle;
+
 import org.json.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +18,17 @@ import java.util.List;
 public class SQLiteHandler extends SQLiteOpenHelper {
     private static SQLiteHandler SQLiteHandler;
     private HttpConnection GET;
+    //SQLiteDatabase db;
+
 
     public SQLiteHandler(Context ctx){
         super(ctx,"DB",null,1);
         GET = new HttpConnection();
+        //db = getWritableDatabase();
+        //onCreate(db);
     }
+
+
     public void onCreate(SQLiteDatabase db) {
         System.out.println("Entra al create");
         String query="CREATE TABLE GENERAL_USER\n" +
