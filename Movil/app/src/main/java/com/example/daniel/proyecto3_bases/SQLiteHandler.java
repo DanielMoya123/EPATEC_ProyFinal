@@ -458,6 +458,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.rawQuery(query, null);
     }
 
+
+
+    public void syncronize(){
+
+
+
+    }
+
+
     public void insertData (String table  ,ContentValues content) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(table, null, content);
