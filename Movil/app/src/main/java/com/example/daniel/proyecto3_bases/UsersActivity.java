@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsersActivity extends AppCompatActivity {
@@ -31,13 +32,13 @@ public class UsersActivity extends AppCompatActivity {
         SQLiteHandler SQLite = new SQLiteHandler(this);
 
 
-        Category categoria = new Category("hola","prueba");
+       /* Category categoria = new Category("hola","prueba");
         try {
             SQLite.addCategory(categoria);
         } catch (Exception e) {
             e.printStackTrace();
 
-        }
+        }*/
 
 /*
         try {
@@ -50,7 +51,8 @@ public class UsersActivity extends AppCompatActivity {
         } */
 
         List<Category> listUsers;
-        List listUsersFinal = null;
+        ArrayList listUsersFinal = new ArrayList();
+
         listUsers = SQLite.getCategories();
         for (int i=0; i<listUsers.size(); i++) {
             listUsersFinal.add(listUsers.get(i)._description);
