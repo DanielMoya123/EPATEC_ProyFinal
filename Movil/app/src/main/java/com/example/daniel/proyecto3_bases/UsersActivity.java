@@ -41,7 +41,6 @@ public class UsersActivity extends AppCompatActivity {
 
         }*/
 
-/*
         try {
             SQLite.UpSyncronize();
         } catch (JSONException e) {
@@ -49,7 +48,7 @@ public class UsersActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } */
+        }
 
         List<Category> listUsers;
         ArrayList listUsersFinal = new ArrayList();

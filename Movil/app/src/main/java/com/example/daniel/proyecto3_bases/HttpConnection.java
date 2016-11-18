@@ -12,17 +12,13 @@ public class HttpConnection {
     String urls ="http://webserviceepatec.azurewebsites.net/EPATEC.asmx/Parsear?frase=";
 
     public String request(String msj) {
-
-
         try {
             URL url = new URL(urls+msj);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.connect();
             con.setDoOutput(true);
             con.setDoInput(true);
             con.setRequestMethod("GET");
             con.setConnectTimeout(5000);
-
             System.out.println("MENSAJE es: " + msj);
 
             int responseCode = con.getResponseCode();
@@ -39,7 +35,6 @@ public class HttpConnection {
                 response.append(inputLine);
             }
             in.close();
-            con.disconnect();
 
             //print result
             System.out.println("Response es: " + response.toString());
@@ -48,10 +43,8 @@ public class HttpConnection {
             return response2;
 
         }catch (Exception e) {
+            System.out.println(e.toString());
             return null;
         }
     }
 }
-
-
-
