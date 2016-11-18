@@ -54,6 +54,7 @@ public class UsersActivity extends AppCompatActivity {
         ArrayList listUsersFinal = new ArrayList();
 
         listUsers = SQLite.getCategories();
+        System.out.println("length es: "+listUsers.size());
         for (int i=0; i<listUsers.size(); i++) {
             listUsersFinal.add(listUsers.get(i)._description);
         }
