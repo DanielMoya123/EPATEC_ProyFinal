@@ -71,6 +71,7 @@ public class UsersActivity extends AppCompatActivity {
             listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
             totalHeight += listItem.getMeasuredHeight();
         }
+        totalHeight -= 5*adapter.getCount();
 
         ViewGroup.LayoutParams params = listCart.getLayoutParams();
         params.height = totalHeight + (listCart.getDividerHeight() * (adapter.getCount() - 1));
