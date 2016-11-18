@@ -2,7 +2,6 @@ package com.example.daniel.proyecto3_bases;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -14,6 +13,12 @@ public class HttpConnection extends AsyncTask<String ,String, String> {
     String urls ="http://webserviceepatec.azurewebsites.net/EPATEC.asmx/Parsear?frase=";
 
     public String request(String msj) {
+        return null;
+    }
+
+
+    @Override
+    protected String doInBackground(String... msj) {
         try {
             URL url = new URL(urls+msj);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -48,11 +53,5 @@ public class HttpConnection extends AsyncTask<String ,String, String> {
             System.out.println(e.toString());
             return null;
         }
-    }
-
-
-    @Override
-    protected String doInBackground(String... strings) {
-        return null;
     }
 }
