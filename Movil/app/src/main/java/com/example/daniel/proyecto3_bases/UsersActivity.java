@@ -32,16 +32,9 @@ public class UsersActivity extends AppCompatActivity {
 
         SQLiteHandler SQLite = new SQLiteHandler(this);
 
-
-       /* Category categoria = new Category("hola","prueba");
-        try {
-            SQLite.addCategory(categoria);
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }*/
 /*
         try {
+
             SQLite.UpSyncronize();
         } catch (JSONException e) {
             Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
