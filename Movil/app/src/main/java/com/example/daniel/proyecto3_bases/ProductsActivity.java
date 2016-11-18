@@ -58,7 +58,7 @@ public class ProductsActivity extends AppCompatActivity {
     }
 
     public void onRadioButtonClicked(View view) {
-        
+
     }
 
 }
