@@ -23,7 +23,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
     public void onCreate(SQLiteDatabase db) {
         System.out.println("Entra al create");
-        /*String query="CREATE TABLE GENERAL_USER\n" +
+        String query="CREATE TABLE GENERAL_USER\n" +
                 "(\n" +
                 "  _id TEXT UNIQUE NOT NULL,\n" +
                 "  _name TEXT NOT NULL,\n" +
@@ -114,8 +114,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 "    CONSTRAINT productWFK FOREIGN KEY (_productId)\n" +
                 "      REFERENCES PRODUCT (_id),\n" +
                 "\tCONSTRAINT wish_productPK PRIMARY KEY (_wishId,_productId)\n" +
-                ");";*/
-        String query = "CREATE TABLE CATEGORY (_id TEXT UNIQUE PRIMARY KEY, _description TEXT );";
+                ");";
+        //String query = "CREATE TABLE CATEGORY (_id TEXT UNIQUE PRIMARY KEY, _description TEXT );";
         db.execSQL(query);
     }
 

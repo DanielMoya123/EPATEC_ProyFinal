@@ -53,15 +53,16 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="This application was made in iTCR Database curse, with the following members:"
+        android:text="Propierty of:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/textViewJairo"
-        android:layout_marginTop="33dp"
         android:id="@+id/textView2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/textViewFran"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginBottom="52dp" />
 </RelativeLayout>
 
 
