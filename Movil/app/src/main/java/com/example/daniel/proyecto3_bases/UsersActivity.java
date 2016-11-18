@@ -30,6 +30,7 @@ public class UsersActivity extends AppCompatActivity {
 
         SQLiteHandler SQLite = new SQLiteHandler(this);
 
+
         Category categoria = new Category("123456piouiytytrdu","prueba");
         try {
             SQLite.addCategory(categoria);
@@ -37,7 +38,9 @@ public class UsersActivity extends AppCompatActivity {
             e.printStackTrace();
 
         }
-        /*
+
+/*
+
         try {
             SQLite.UpSyncronize();
         } catch (JSONException e) {
@@ -45,8 +48,7 @@ public class UsersActivity extends AppCompatActivity {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-*/
+        } */
 
         List listUsers;
         listUsers = SQLite.getCategories();

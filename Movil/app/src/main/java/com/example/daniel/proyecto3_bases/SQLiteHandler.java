@@ -237,7 +237,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         String query="listar/clientes";
         String ans=GET.request(query);
-        wait(1000);
         System.out.println("ans es: " + ans);
         JSONArray jsonArray = new JSONArray(ans);
         for(int i=0;i<jsonArray.length();i++){
@@ -468,8 +467,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
 
     public void syncronize(){
-
-
 
     }
 
