@@ -392,6 +392,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
             db.close();
+        System.out.println("G,yitjrhgrwhklhjgthrgsjhk."+cate.toString());
             return cate;
 
     }

@@ -31,7 +31,7 @@ public class UsersActivity extends AppCompatActivity {
         SQLiteHandler SQLite = new SQLiteHandler(this);
 
 
-        Category categoria = new Category("123456piouiytytrdu","prueba");
+        Category categoria = new Category("hola","prueba");
         try {
             SQLite.addCategory(categoria);
         } catch (Exception e) {
@@ -40,7 +40,6 @@ public class UsersActivity extends AppCompatActivity {
         }
 
 /*
-
         try {
             SQLite.UpSyncronize();
         } catch (JSONException e) {
