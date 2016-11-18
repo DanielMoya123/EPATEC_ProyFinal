@@ -24,4 +24,5 @@
     <string name="title_activity_cart">CartActivity</string>
     <string name="title_activity_users">UsersActivity</string>
     <string name="title_activity_categories">CategoriesActivity</string>
+    <string name="title_activity_products">ProductsActivity</string>
 </resources>
