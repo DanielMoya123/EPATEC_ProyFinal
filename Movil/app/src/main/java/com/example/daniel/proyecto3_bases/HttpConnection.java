@@ -1,4 +1,6 @@
 package com.example.daniel.proyecto3_bases;
+import android.os.AsyncTask;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -8,7 +10,7 @@ import java.net.URL;
  * Created by ferllini13 on 16/11/2016.
  */
 
-public class HttpConnection {
+public class HttpConnection extends AsyncTask<String ,String, String> {
     String urls ="http://webserviceepatec.azurewebsites.net/EPATEC.asmx/Parsear?frase=";
 
     public String request(String msj) {
@@ -46,5 +48,11 @@ public class HttpConnection {
             System.out.println(e.toString());
             return null;
         }
+    }
+
+
+    @Override
+    protected String doInBackground(String... strings) {
+        return null;
     }
 }
