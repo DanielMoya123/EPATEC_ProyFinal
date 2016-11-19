@@ -1297,10 +1297,12 @@ $scope.addUser=function(Uname,lname1,lname2,phone,address,inum,bdate,type,passwo
                     });
 };
 function registry(Uname,lname1,lname2,phone,address,inum,bdate,type,password,office){
+							var form = document.getElementById("myForm3");
                             var request2 = "";
                             var peticion2 = "crear/cliente/_id/"
                             var newid = new Date().getTime().toString().slice(2,12);
-                            peticion2 = peticion2.concat(newid,"/_name/",Uname.replace(" ","%20"),"/_lastName1/", lname1,"/_lastName2/",lname2,"/_cellPhone/",phone,"/_identityNumber/",inum,"/_residenceAddress/",address.replace(" ","%20"),"/_birthDate/",bdate,"/_type/",type,"/_password/",password,"/_office/",office.replace(" ","%20"));
+                            //crear/cliente/id/nombre/ap1/ap2/cell/cedul/residencia/fechaNa/rolid/12-12-12/juanProducto
+                            peticion2 = peticion2.concat(newid,"/_name/",Uname.replace(" ","%20"),"/_lastName1/", lname1,"/_lastName2/",lname2,"/_cellPhone/",phone,"/_identityNumber/",inum,"/_residenceAddress/",address.replace(" ","%20"),"/_birthDate/",bdate,"/_type/",type,"/_password/",password,"/username/",Uname.replace(" ","%20"),newid);
                                 
                             request2 = request2.concat(ip, peticion2);
                  

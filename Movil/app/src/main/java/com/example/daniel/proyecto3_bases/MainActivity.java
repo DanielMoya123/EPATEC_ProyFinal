@@ -39,12 +39,40 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Button mSignInButton = (Button) findViewById(R.id.buttonSync);
+        Button mSignInButton = (Button) findViewById(R.id.buttonMatu);
         mSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
                     sync();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Button mVesp = (Button) findViewById(R.id.buttonVesp);
+        mVesp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    SQLiteHandler.getDB(this).downSincronize();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Button mClear = (Button) findViewById(R.id.buttonClear);
+        mClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    SQLiteHandler.getDB(this).drop();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {

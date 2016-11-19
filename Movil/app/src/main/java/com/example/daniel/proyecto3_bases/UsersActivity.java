@@ -37,6 +37,7 @@ public class UsersActivity extends AppCompatActivity {
     private EditText mUserBirth;
     private EditText mUserPassword;
     private String office2;
+    private EditText mUserRol;
 
 
 
@@ -102,6 +103,9 @@ public class UsersActivity extends AppCompatActivity {
         mUserBirth = (EditText) findViewById(R.id.birth);
         mUserPassword = (EditText) findViewById(R.id.password2);
 
+        mUserRol = (EditText) findViewById(R.id.rol);
+
+
         Button mSignInButton = (Button) findViewById(R.id.add_user_button);
         mSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,12 +137,14 @@ public class UsersActivity extends AppCompatActivity {
         String userIdentity = mUserIdentity.getText().toString();
         String userBirth = mUserBirth.getText().toString();
         String userPassword = mUserPassword.getText().toString();
+        String userRol = mUserRol.getText().toString();
 
         Random rand = new Random();
         int n = rand.nextInt(10000);
         String id = Integer.toString(n);
         Users usuario = new Users(id,userName,userLast1,userLast2,userPhone,userIdentity,"usuario",userPassword,userBirth,office2,userAddress,"0");
         SQLiteHandler handler = new SQLiteHandler(this);
+        usuario.rol = userRol;
         handler.addUser(usuario,true);
 
     }
