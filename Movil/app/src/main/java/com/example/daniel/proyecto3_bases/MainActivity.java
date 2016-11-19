@@ -62,16 +62,17 @@ public class MainActivity extends AppCompatActivity
 
 
     public void Msync(final Context context){
-        try{
-            SQLiteHandler.getDB(context).Drop();
-        }catch (Exception e){
-            System.out.println(e.toString());
-        }
-        SQLiteHandler.getDB(context).createDB();
+
         Thread thread = new Thread() {
 
             @Override
             public void run() {
+                try{
+                    SQLiteHandler.getDB(context).Drop();
+                }catch (Exception e){
+                    System.out.println(e.toString());
+                }
+                SQLiteHandler.getDB(context).createDB();
 
                 try {
                     SQLiteHandler.getDB(context).UpSyncronize();

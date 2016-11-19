@@ -20,7 +20,7 @@ public interface GeneralUserString {
 	public static final String USERNAMEUNIQUE = "CONSTRAINT general_user_username_key UNIQUE (_username)";
 	
 	public static final String CREATE_GENERAL_USER = "CREATE TABLE "+ GENERAL_USER + "("+
-								ID + NAME +LASTNAME1 + LASTNAME2 + IDENTITYNUMBER + PASSWORD+
+								ID + NAME +LASTNAME1 + LASTNAME2 + IDENTITYNUMBER + PASSWORD+RESIDENCE +
 								USERNAME + CELLPHONE + BIRTHDATE + OFFICE + PENALTY +
 								CELLPHONEUNIQUE + IDENTITYUNIQUE + USERNAMEUNIQUE + ")";
 }
