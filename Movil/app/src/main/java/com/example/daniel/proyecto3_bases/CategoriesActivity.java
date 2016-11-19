@@ -76,7 +76,7 @@ public class CategoriesActivity extends AppCompatActivity {
         String cat_name = mCatName.getText().toString();
         Category categoria = new Category("1231656",cat_name);
         SQLiteHandler handler = new SQLiteHandler(this);
-        handler.addCategory(categoria);
+        handler.addCategory(categoria,true);
     }
 
 }

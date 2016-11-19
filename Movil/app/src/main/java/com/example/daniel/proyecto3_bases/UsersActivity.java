@@ -135,7 +135,7 @@ public class UsersActivity extends AppCompatActivity {
 
         Users usuario = new Users("12345673123",userName,userLast1,userLast2,userPhone,userIdentity,"usuario",userPassword,userBirth,office2,userAddress,"0");
         SQLiteHandler handler = new SQLiteHandler(this);
-        handler.addUser(usuario);
+        handler.addUser(usuario,true);
 
     }
 

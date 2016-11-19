@@ -42,99 +42,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         System.out.println("Entra al create");
-       /* String query = "CREATE TABLE GENERAL_USER\n" +
-                "(\n" +
-                "  _id TEXT UNIQUE NOT NULL,\n" +
-                "  _name TEXT NOT NULL,\n" +
-                "  _lastName1 TEXT ,\n" +
-                "  _lastName2 TEXT ,\n" +
-                "  _identityNumber TEXT NOT NULL,\n" +
-                "  _password TEXT NOT NULL,\n" +
-                "  _username TEXT NOT NULL,\n" +
-                "  _cellPhone TEXT,\n" +
-                "  _birthDate TEXT,\n" +
-                "  _penalty numeric ,\n" +
-                "  _office TEXT ,\n" +
-                "  _residenceAddress TEXT,\n" +
-                "  CONSTRAINT gupk PRIMARY KEY (_id),\n" +
-                "  CONSTRAINT general_user_cell_phone_number_key UNIQUE (_cellPhone),\n" +
-                "  CONSTRAINT general_user_identity_number_key UNIQUE (_identityNumber),\n" +
-                "  CONSTRAINT general_user_username_key UNIQUE (_username)\n" +
-                ");\n" +
-                "\n" +
-                "CREATE TABLE ROL\n" +
-                "(\n" +
-                "  _id TEXT UNIQUE NOT NULL,\n" +
-                "  _description TEXT ,\n" +
-                "  CONSTRAINT rpk PRIMARY KEY (_id)\n" +
-                ");\n" +
-                "\n" +
-                "CREATE TABLE USER_ROL\n" +
-                "(\n" +
-                "  _user_id TEXT,\n" +
-                "  rol_id TEXT,\n" +
-                "  CONSTRAINT user_rol_rol_id_fkey FOREIGN KEY (rol_id)\n" +
-                "      REFERENCES rol (_id),\n" +
-                "  CONSTRAINT user_rol_user_id_fkey FOREIGN KEY (_user_id)\n" +
-                "      REFERENCES general_user (_id),\n" +
-                "  CONSTRAINT user_rol_pkey PRIMARY KEY (_user_id,rol_id)\n" +
-                ");\n" +
-                "\n" +
-                "\n" +
-                "CREATE TABLE CATEGORY(\n" +
-                "\t_id TEXT UNIQUE NOT NULL,\n" +
-                "\t_description TEXT NOT NULL,\n" +
-                "\tCONSTRAINT Cpk PRIMARY KEY (_id),\n" +
-                ")\n" +
-                "\n" +
-                "CREATE TABLE PRODUCT\n" +
-                "(\n" +
-                "  _id TEXT UNIQUE NOT NULL,\n" +
-                "  _description TEXT NOT NULL,\n" +
-                "  _office TEXT,\n" +
-                "  _nonTaxable bit,\n" +
-                "  price INTEGER NOT NULL,\n" +
-                "  _categoryId INTEGER NOT NULL,\n" +
-                "  CONSTRAINT mpk PRIMARY KEY (_id),\n" +
-                "  CONSTRAINT category_fk FOREIGN KEY (_categoryId)\n" +
-                "      REFERENCES CATEGORY (_id)\n" +
-                ");\n" +
-                "\n" +
-                "\n" +
-                "CREATE TABLE PROVIDER_PRODUCTS(\n" +
-                "\t_providerId TEXT NOT NULL,\n" +
-                "\t_productId TEXT NOT NULL,\n" +
-                "\tCONSTRAINT providerFK FOREIGN KEY (_providerId)\n" +
-                "\t  REFERENCES GENERAL_USER (_id),\n" +
-                "    CONSTRAINT productFK FOREIGN KEY (_productId)\n" +
-                "      REFERENCES PRODUCT (_id),\n" +
-                "    CONSTRAINT provider_productsPK PRIMARY KEY (_providerId,_productId)\n" +
-                ");\n" +
-                "\n" +
-                "CREATE TABLE WISH (\n" +
-                "\t_id TEXT UNIQUE NOT NULL,\n" +
-                "\t_office TEXT,\n" +
-                "\t_clientId TEXT,\n" +
-                "\t_sellerId TEXT,\n" +
-                "\t_penalty NUMERIC,\n" +
-                "\t_creationTime TEXT,\n" +
-                "\tCONSTRAINT clientFK FOREIGN KEY (_clientId)\n" +
-                "\t  REFERENCES GENERAL_USER (_id),\n" +
-                "    CONSTRAINT sellerFK FOREIGN KEY (_sellerId)\n" +
-                "      REFERENCES GENERAL_USER (_id)\n" +
-                ");\n" +
-                "\n" +
-                "CREATE TABLE WISH_PRODUCTS (\n" +
-                "\t_wishId TEXT NOT NULL,\n" +
-                "\t_productId TEXT NOT NULL,\n" +
-                "\tnumberOfProducts INTEGER,\n" +
-                "\tCONSTRAINT wishFK FOREIGN KEY (_wishId)\n" +
-                "\t  REFERENCES WISH (_id),\n" +
-                "    CONSTRAINT productWFK FOREIGN KEY (_productId)\n" +
-                "      REFERENCES PRODUCT (_id),\n" +
-                "\tCONSTRAINT wish_productPK PRIMARY KEY (_wishId,_productId)\n" +
-                ");";
-        db.execSQL(query);*/
         System.out.println("General User  " + GeneralUserString.CREATE_GENERAL_USER);
         //db.execSQL(GeneralUserString.CREATE_GENERAL_USER);
         System.out.println("Rol  " + RolString.CREATE_ROL);
@@ -192,7 +99,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     }
 
-    public void addUser(Users urs) {
+    public void addUser(Users urs,boolean flag) {
 
         ContentValues values = new ContentValues();
         values.put("_id", urs._id);
@@ -210,13 +117,14 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         insertData(urs.table, values);
         addUseRol(urs._id,urs.rol);
+        if (flag){
         Pair<String, Users> p=new Pair("add",urs);
 
-        UpUser.add(p);
+        UpUser.add(p);}
 
     }
 
-    public void addProduct(Products pro) {
+    public void addProduct(Products pro,boolean flag) {
         ContentValues values = new ContentValues();
 
         values.put("_id",pro._id);
@@ -228,14 +136,14 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_amount",pro._amount);
 
         insertData(pro.table, values);
-
+        if (flag){
         Pair<String, Products> p=new Pair("add",pro);
 
-        UpProduct.add(p);
+        UpProduct.add(p);}
 
     }
 
-    public void addOrder(Orders ord) {
+    public void addOrder(Orders ord,boolean flag) {
         ContentValues values = new ContentValues();
         values.put("_id",ord._id);
         values.put("_clientId",ord._clientId);
@@ -249,9 +157,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             addOrderPro(ord._id,ord.pro.get(i).first,(int)ord.pro.get(i).second);
 
         }
+        if (flag){
         Pair<String, Orders> p=new Pair("add",ord);
 
-        UpOrder.add(p);
+        UpOrder.add(p);}
     }
     public void Drop(){
 
@@ -277,16 +186,16 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     }
 
-    public void addCategory(Category cate){
+    public void addCategory(Category cate,boolean flag){
         ContentValues values = new ContentValues();
 
         values.put("_id", cate._id);
         values.put("_description",cate._description);
         insertData(cate.table, values);
-
+        if (flag){
         Pair<String, Category> p=new Pair("add",cate);
 
-        UpCate.add(p);
+        UpCate.add(p);}
     }
 
     public void addRol(String id, String descrip){
@@ -325,15 +234,16 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     public void UpSyncronize() throws JSONException, InterruptedException {
-        /*UpUsers();
+        UpUsers();
         UpProducts();
-        UpOrders();*/
+        UpOrders();
         UpCategory();
-        /*UpProviderPro();
+        UpProviderPro();
         UpRol();
         UpUseRol();
-        UpOrderPro();*/
+        UpOrderPro();
     }
+
 
     public void ReSyncronize(){
         sendUsers();
@@ -463,7 +373,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
-                addUser(new Users(item.getString("_id"), item.getString("_name"), item.getString("_lastName1"), item.getString("_lastName2"), item.getString("_cellPhone"), item.getString("_identityNumber"), item.getString("_username"), item.getString("_password"), item.getString("_birthDate"), item.getString("_office"), item.getString("_residenceAddress"), item.getString("penalty")));
+                addUser(new Users(item.getString("_id"), item.getString("_name"), item.getString("_lastName1"), item.getString("_lastName2"), item.getString("_cellPhone"), item.getString("_identityNumber"), item.getString("_username"), item.getString("_password"), item.getString("_birthDate"), item.getString("_office"), item.getString("_residenceAddress"), item.getString("penalty")),false);
             }
 
         }else {
@@ -481,7 +391,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
-                addProduct(new Products(item.getString("_id"), item.getBoolean("_nontaxable"), item.getString("_office"), item.getString("_description"), item.getString("_categoryId"), item.getInt("_amount"), item.getInt("price")));
+                addProduct(new Products(item.getString("_id"), item.getBoolean("_nontaxable"), item.getString("_office"), item.getString("_description"), item.getString("_categoryId"), item.getInt("_amount"), item.getInt("price")),false);
             }
             return true;
 
@@ -495,7 +405,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
-                addOrder(new Orders(item.getString("_id"), item.getString("_office"), item.getString("_clientId"), item.getString("_sellerId"), item.getBoolean("penalty"), item.getString("_creationTime")));
+                addOrder(new Orders(item.getString("_id"), item.getString("_office"), item.getString("_clientId"), item.getString("_sellerId"), item.getBoolean("penalty"), item.getString("_creationTime")),false);
             }
             return true;
         }else return false;
@@ -509,7 +419,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
-                addCategory(new Category(item.getString("_id"), item.getString("_description")));
+                addCategory(new Category(item.getString("_id"), item.getString("_description")),false);
             }
             return true;
         }else return false;

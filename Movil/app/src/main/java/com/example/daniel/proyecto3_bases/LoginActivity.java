@@ -117,6 +117,18 @@ public class LoginActivity extends AppCompatActivity{
         };
         thread.start();
     }
+    private boolean ifConect(){
+        boolean status = false;
+        try {
+            URL u = new URL("https://www.google.com/");
+            HttpsURLConnection con = (HttpsURLConnection) u.openConnection();
+            con.connect();
+            status = true;
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
+        return status;
+    }
 
     public void Rsync(final Context context){
 
@@ -125,13 +137,15 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void run() {
                while(true){
+                   if (ifConect()){
                         SQLiteHandler.getDB(context).ReSyncronize();
                         try {
                             Thread.sleep(60000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
 
-                    }
+
+                        }                    }
                }
             }
         };
@@ -139,12 +153,10 @@ public class LoginActivity extends AppCompatActivity{
     }
 
 
-
     public void Bsync(final Context context) {
 
+
     }
-
-
     private void attemptLogin() {
 
         // Reset errors.
