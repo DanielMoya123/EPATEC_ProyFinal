@@ -173,7 +173,7 @@ angular.module('starter', ['ionic','starter.itemscontrol','starter.myproducts','
     
     var type=$scope.login.menutype;
 for ( i= 0; i< type.length; i++ )  { 
-     if ($scope.login.menutype===0){
+     if (type[i]==0){
          $scope.buyer=true;
      }
       else if (type[i]==1){
