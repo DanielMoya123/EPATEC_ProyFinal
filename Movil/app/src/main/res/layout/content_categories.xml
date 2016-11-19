@@ -45,6 +45,8 @@
                 android:layout_weight="1"
                 android:text="borrar"
                 android:onClick="btnRemoveClick"
+                android:layout_toEndOf="@+id/allCategories"
+                android:layout_toRightOf="@+id/allCategories"
                 />
 
         </LinearLayout>
