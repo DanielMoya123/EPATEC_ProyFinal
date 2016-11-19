@@ -43,15 +43,6 @@ public class CategoriesActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsersFinal);
         listCart.setAdapter(adapter);
 
-        listCart.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> list, View view, int position, long id) {
-                System.out.println("onListItemClick: " + position);
-
-            }
-
-        });
-
 
         int totalHeight = 0;
         int desiredWidth = View.MeasureSpec.makeMeasureSpec(listCart.getWidth(), View.MeasureSpec.AT_MOST);
