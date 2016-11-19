@@ -51,7 +51,7 @@ public class HttpConnection{
 
             //print result
             System.out.println(response.toString());
-            String response2 = response.substring(75, response.length()-9);
+            String response2 = response.substring(74, response.length()-9);
             System.out.println("ESTA ES BICHOS!!!  " + response2);
             JSONArray jsonArray = new JSONArray(response2);
             return jsonArray;
