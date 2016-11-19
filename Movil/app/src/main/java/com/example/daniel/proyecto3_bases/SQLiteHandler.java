@@ -378,6 +378,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 JSONObject item = jsonArray.getJSONObject(i);
                 Users usr=new Users(item.getString("_id"), item.getString("_name"), item.getString("_lastName1"), item.getString("_lastName2"), item.getString("_cellPhone"), item.getString("_identityNumber"), item.getString("_username"), item.getString("_password"), item.getString("_birthDate"), item.getString("_office"), item.getString("_residenceAddress"), item.getString("penalty"));
                 addUser(usr,false);
+                addUser(usr,false);
             }
 
         }else {
