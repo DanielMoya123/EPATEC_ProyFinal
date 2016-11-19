@@ -28,11 +28,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     private static SQLiteHandler SQLiteHandler;
     private HttpConnection GET;
+    SQLiteDatabase db;
 
 
     public SQLiteHandler(Context ctx){
         super(ctx,"DB",null,1);
         GET = new HttpConnection();
+        //db = getWritableDatabase();
+        //onCreate(db);
+
     }
 
     @Override

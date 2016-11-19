@@ -10,12 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriesActivity extends AppCompatActivity {
+    private EditText mCatName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,22 @@ public class CategoriesActivity extends AppCompatActivity {
         listCart.setLayoutParams(params);
         listCart.requestLayout();
 
+        mCatName = (EditText) findViewById(R.id.cat_name);
+        Button mCreateCat = (Button) findViewById(R.id.add_category_button);
+        mCreateCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createCategory();
+            }
+        });
+
+    }
+
+    private void createCategory(){
+        String cat_name = mCatName.getText().toString();
+        Category categoria = new Category("1231656",cat_name);
+        SQLiteHandler handler = new SQLiteHandler(this);
+        handler.addCategory(categoria);
     }
 
 }

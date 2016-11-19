@@ -8,12 +8,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsActivity extends AppCompatActivity {
+    private EditText mProductName;
+    private EditText mProductQuantity;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
+    private boolean taxable;
+    private EditText mProductCatId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +65,44 @@ public class ProductsActivity extends AppCompatActivity {
         listCart.setLayoutParams(params);
         listCart.requestLayout();
 
+        mProductName = (EditText) findViewById(R.id.product_name);
+        mProductQuantity = (EditText) findViewById(R.id.product_name);
+        mProductCatId = (EditText) findViewById(R.id.product_cat_id);
+        radioGroup = (RadioGroup) findViewById(R.id.radio);
+
+
+        Button mSignInButton = (Button) findViewById(R.id.add_product_button);
+        mSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createProduct();
+            }
+        });
+
+
+
 
     }
 
+    private void createProduct() {
+        String productName = mProductName.getText().toString();
+        String productQuantity = mProductQuantity.getText().toString();
+        String productCatId = mProductCatId.getText().toString();
+        Products producto = new Products("12313",taxable,"Cartago",productName,productCatId,1,100);
+        SQLiteHandler handler = new SQLiteHandler(this);
+
+        handler.addProduct(producto);
+    }
+
     public void onRadioButtonClicked(View view) {
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        if (selectedId == R.id.radio_taxable) {
+            taxable = true;
+        }
+        else {
+            taxable = false;
+        }
+
 
     }
 
