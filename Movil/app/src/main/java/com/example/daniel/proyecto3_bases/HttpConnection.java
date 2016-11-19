@@ -1,6 +1,8 @@
 package com.example.daniel.proyecto3_bases;
 import android.os.AsyncTask;
 
+import org.json.JSONArray;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,19 +12,16 @@ import java.net.URL;
  * Created by ferllini13 on 16/11/2016.
  */
 
-public class HttpConnection extends AsyncTask<String, String, String> {
+public class HttpConnection{
     private static String response2;
-    String urls ="http://webserviceepatec.azurewebsites.net/EPATEC.asmx/Parsear?frase=";
+     static String urls ="http://webserviceepatec.azurewebsites.net/EPATEC.asmx/Parsear?frase=";
 
-    public static String getAns(){
-        return response2;
-    }
-    @Override
-    protected String doInBackground(String... msj) {
+    public static JSONArray getAns(String msj){
         String realOutput="";
+
         try {
 
-            URL url = new URL(urls+msj[0]);
+            URL url = new URL(urls+msj);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setDoOutput(true);
             con.setRequestMethod("GET");
@@ -52,17 +51,13 @@ public class HttpConnection extends AsyncTask<String, String, String> {
             System.out.println(response.toString());
             String response3 = response.substring(68, response.length()-9);
             System.out.println(response3);
-
+            JSONArray jsonArray = new JSONArray(response2);
+            return jsonArray;
 
         }catch (Exception e) {
             System.out.println(e.toString());
-            response2=null;
+            return null;
         }
-        return response2;
-    }
 
-    @Override
-    protected void onPostExecute(String s) {
-        response2=s;
     }
 }

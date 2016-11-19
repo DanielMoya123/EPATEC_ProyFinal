@@ -242,14 +242,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public boolean UpUsers() throws JSONException, InterruptedException {
 
-        String query="listar/clientes";
+        String query = "listar/clientes";
+        HttpConnection http=new HttpConnection();
 
-        new HttpConnection().execute(query, query, query);
-        Thread.sleep(10000);
+        JSONArray jsonArray= HttpConnection.getAns(query);
 
-        String ans= HttpConnection.getAns();
-        System.out.println("ans es: " + ans);
-        JSONArray jsonArray = new JSONArray(ans);
         for(int i=0;i<jsonArray.length();i++){
             JSONObject item=jsonArray.getJSONObject(i);
             addUser(new Users(item.getString("_id"),item.getString("_name"), item.getString("_lastName1"), item.getString("_lastName2"), item.getString("_cellPhone"), item.getString("_identityNumber"),item.getString( "_username"), item.getString( "_password"),item.getString( "_birthDate"),item.getString( "_office"), item.getString( "_residenceAddress"),item.getString( "penalty")));
