@@ -39,7 +39,7 @@ public class CartActivity extends AppCompatActivity {
 
         ListView lv = (ListView) findViewById(R.id.listview);
         generateListContent();
-        lv.setAdapter(new MyListAdaper(this, R.layout.activity_cart, data));
+        lv.setAdapter(new MyListAdaper(this, R.layout.content_cart, data));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
