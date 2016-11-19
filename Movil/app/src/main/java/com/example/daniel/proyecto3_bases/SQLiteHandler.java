@@ -116,9 +116,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_residenceAddress", urs._residenceAddress);
 
         insertData(urs.table, values);
-        addUseRol(urs._id,urs.rol);
+
+
+
         if (flag){
-        Pair<String, Users> p=new Pair("add",urs);
+            addUseRol(urs._id,urs.rol);
+            Pair<String, Users> p=new Pair("add",urs);
 
         UpUser.add(p);}
 
@@ -130,7 +133,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_id",pro._id);
         values.put("_description",pro._description);
         values.put("_office",pro._office);
-        values.put("_nonTaxable",pro._nontaxable);
+        values.put("_nonTaxable",pro._nonTaxable);
         values.put("price",pro.price);
         values.put("_categoryId",pro._categoryId);
         values.put("_amount",pro._amount);
@@ -152,7 +155,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_office",ord._office);
         values.put("_creationTime",ord._creationTime);
 
-        insertData("tabla", values);
+        insertData(ord.table, values);
         for (int i=0; i<ord.pro.size();i++){
             addOrderPro(ord._id,ord.pro.get(i).first,(int)ord.pro.get(i).second);
 
@@ -373,7 +376,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
-                addUser(new Users(item.getString("_id"), item.getString("_name"), item.getString("_lastName1"), item.getString("_lastName2"), item.getString("_cellPhone"), item.getString("_identityNumber"), item.getString("_username"), item.getString("_password"), item.getString("_birthDate"), item.getString("_office"), item.getString("_residenceAddress"), item.getString("penalty")),false);
+                Users usr=new Users(item.getString("_id"), item.getString("_name"), item.getString("_lastName1"), item.getString("_lastName2"), item.getString("_cellPhone"), item.getString("_identityNumber"), item.getString("_username"), item.getString("_password"), item.getString("_birthDate"), item.getString("_office"), item.getString("_residenceAddress"), item.getString("penalty"));
+                addUser(usr,false);
             }
 
         }else {
@@ -391,7 +395,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
-                addProduct(new Products(item.getString("_id"), item.getBoolean("_nontaxable"), item.getString("_office"), item.getString("_description"), item.getString("_categoryId"), item.getInt("_amount"), item.getInt("price")),false);
+                addProduct(new Products(item.getString("_id"), item.getBoolean("_nonTaxable"), item.getString("_office"), item.getString("_description"), item.getString("_categoryId"), item.getInt("_amount"), item.getInt("price")),false);
             }
             return true;
 
