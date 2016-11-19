@@ -72,31 +72,6 @@
                 android:text="Sign in"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/sign_up_form"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:text="Don't have an awesome account?"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/textView3" />
-
-                <Button
-                    android:id="@+id/sign_up_button"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="Sign up"
-                    android:textStyle="bold"
-                    android:layout_weight="0.06" />
-
-            </LinearLayout>
 
 
         </LinearLayout>
