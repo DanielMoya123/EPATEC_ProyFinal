@@ -59,10 +59,8 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 try {
                     SQLiteHandler.getDB(getApplicationContext()).DownSyncronize();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+
                 }
             }
         });
@@ -72,10 +70,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 try {
-                    SQLiteHandler.getDB(this).drop();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
+                    SQLiteHandler.getDB(getApplicationContext()).Drop();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
