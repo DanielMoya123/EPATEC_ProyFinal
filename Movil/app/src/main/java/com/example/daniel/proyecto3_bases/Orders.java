@@ -17,7 +17,7 @@ public class Orders {
     public String _sellerId;
     public boolean penalty;
     public String _creationTime;
-    List<Pair<String,String>> pro= new ArrayList<Pair<String,String>>();
+    List<Pair<String,Integer>> pro= new ArrayList<Pair<String,Integer>>();
 
     public Orders(String _id, String _office, String _clientId, String _sellerId, boolean penalty, String _creationTime){
         this._id=_id;
