@@ -32,17 +32,6 @@ public class UsersActivity extends AppCompatActivity {
 
         SQLiteHandler SQLite = new SQLiteHandler(this);
 
-/*
-        try {
-
-            SQLite.UpSyncronize();
-        } catch (JSONException e) {
-            Toast.makeText(getApplicationContext(),"error",Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-
         List<Category> listUsers;
         ArrayList listUsersFinal = new ArrayList();
 

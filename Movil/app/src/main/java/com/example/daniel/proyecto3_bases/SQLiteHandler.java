@@ -229,13 +229,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void UpSyncronize() throws JSONException, InterruptedException {
         UpUsers();
-        UpProducts();
+        /*UpProducts();
         UpOrders();
         UpCategory();
         UpProviderPro();
         UpRol();
         UpUseRol();
-        UpOrderPro();
+        UpOrderPro();*/
     }
 
 
@@ -243,7 +243,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public boolean UpUsers() throws JSONException, InterruptedException {
 
         String query="listar/clientes";
-        String ans=GET.request(query);
+
+        new HttpConnection().execute(query, query, query);
+        Thread.sleep(10000);
+
+        String ans= HttpConnection.getAns();
         System.out.println("ans es: " + ans);
         JSONArray jsonArray = new JSONArray(ans);
         for(int i=0;i<jsonArray.length();i++){
@@ -252,7 +256,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         }
             return true;
     }
-
+/*
     public boolean UpProducts() throws JSONException {
         String query="listar/productos";
         String ans=GET.request(query);
@@ -330,7 +334,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             addOrderPro(item.getString("_wishId"),item.getString("_productId"),item.getInt("numberOfProducts"));
         }
         return true;
-    }
+    }*/
 
     public List<Users> getUsers(){
         List<Users> usrl = new ArrayList<Users>();
