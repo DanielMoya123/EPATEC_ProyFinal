@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity
 
                 }
             }
-        });it 
+        });
 
         Button mClear = (Button) findViewById(R.id.buttonClear);
         mClear.setOnClickListener(new View.OnClickListener() {
