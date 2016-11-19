@@ -267,7 +267,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void sendUsers(){
         for (int x=0;x<2;x++) {
-            if (UpUser.size() != 0 && ifConect()) {
+            if (UpUser.size() != 0) {
                 SQLiteDatabase db = this.getReadableDatabase();
                 for (int i = 0; i < UpUser.size(); i++) {
                     String query;

@@ -14,7 +14,7 @@ import okhttp3.Response;
 
 public class HttpConnection2 {
     private static HttpConnection2 http;
-    static String urls = "http://172.19.13.120:8080/Construtec.asmx/Parsear?frase=";
+    static String urls = "http://192.168.43.210:8080/Construtec.asmx/Parsear?frase=";
     private final OkHttpClient client = new OkHttpClient();
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -56,6 +56,7 @@ public class HttpConnection2 {
             jsonArray = new JSONArray(response2);
         } catch (JSONException e) {
             e.printStackTrace();
+            return null;
         }
         return jsonArray;
     }

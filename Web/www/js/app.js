@@ -1,4 +1,4 @@
-var ip = "http://webserviceepatec.azurewebsites.net/EPATEC.asmx/Parsear?frase="; 
+var ip = "http://192.168.43.210:8080/Construtec.asmx/Parsear?frase="; 
 angular.module('starter', ['ionic','starter.itemscontrol','starter.myproducts','starter.userscontrol', 'starter.categoriescontrol', 'starter.orderscontrol', 'starter.stadisticcontrol']) /*ionic le permite iniciar*/
 
 
@@ -87,7 +87,7 @@ angular.module('starter', ['ionic','starter.itemscontrol','starter.myproducts','
                         console.log('Get Post', response);
                         console.log("Get Post status", response.data);
                         var data = response.data;
-                        var result = data.substring(70, data.length - 9);
+                        var result = data.substring(76, data.length - 9);
                         console.log("Get Post status", result);
     
                         if (result==="[]"){
@@ -122,7 +122,7 @@ angular.module('starter', ['ionic','starter.itemscontrol','starter.myproducts','
             console.log('Get Post', response);
             console.log("Get Post status", response.data);
             var data = response.data;
-            var result = data.substring(70, data.length - 9);
+            var result = data.substring(76, data.length - 9);
             console.log("Get Post status", result);
         
         
@@ -210,7 +210,7 @@ for ( i= 0; i< type.length; i++ )  {
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 2", result2);                            
@@ -435,7 +435,7 @@ for ( i= 0; i< type.length; i++ )  {
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);                            
                             if (result==="[]"){
                                 updaterelation(newid);
@@ -459,7 +459,7 @@ for ( i= 0; i< type.length; i++ )  {
                     console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);                          
                             if (result==="[]"){
                                 return;
@@ -497,7 +497,7 @@ $scope.items = ProductsControl.list();
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 2", result2);                            
@@ -614,7 +614,7 @@ $scope.items = ProductsControl.list();
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             if (result==="[]"){
                                 alert("Product Created");
@@ -669,7 +669,7 @@ $scope.items = ProductsControl.list();
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 9", result2);                            
@@ -791,7 +791,7 @@ $scope.items = ProductsControl.list();
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 2", result2); 
@@ -819,7 +819,7 @@ $scope.items = ProductsControl.list();
                                 console.log('Get Post', response);
                                 console.log("Get Post status", response.data);
                                 var data = response.data;
-                                var result = data.substring(70, data.length - 9);
+                                var result = data.substring(76, data.length - 9);
                                 console.log("Get Post status", result);
                                 if (result==="no se pudo conectar"){
                                     alert("check the data");
@@ -851,7 +851,7 @@ $scope.items = ProductsControl.list();
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 2", result2);                            
@@ -888,7 +888,7 @@ $scope.items = ProductsControl.list();
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 2", result2);                            
@@ -928,7 +928,7 @@ $scope.items = ProductsControl.list();
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 2", result2);                            
@@ -1168,12 +1168,9 @@ $scope.items = ProductsControl.list();
                             .then(function (response) {
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
-                    });
-     
-     
+                    }); 
  };
-     
-     
+    
      
      var lettersC = $scope.lettersC = [];
     var itemsFinalC = $scope.itemsFinalC = [];
@@ -1286,7 +1283,7 @@ $scope.addUser=function(Uname,lname1,lname2,phone,address,inum,bdate,type,passwo
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 2", result2); 
@@ -1315,7 +1312,7 @@ function registry(Uname,lname1,lname2,phone,address,inum,bdate,type,password,off
                                 console.log('Get Post', response);
                                 console.log("Get Post status", response.data);
                                 var data = response.data;
-                                var result = data.substring(70, data.length - 9);
+                                var result = data.substring(76, data.length - 9);
                                 console.log("Get Post status", result);
                                 if (result==="no se pudo conectar"){
                                     alert("check the data");
@@ -1342,7 +1339,7 @@ $scope.addCategory=function(cname){
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 2", result2);

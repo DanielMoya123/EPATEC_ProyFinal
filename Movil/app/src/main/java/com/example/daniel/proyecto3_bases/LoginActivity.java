@@ -136,18 +136,14 @@ public class LoginActivity extends AppCompatActivity{
         Thread thread = new Thread() {
             @Override
             public void run() {
-               while(true){
-                   if (ifConect()){
-                        SQLiteHandler.getDB(context).ReSyncronize();
-                        try {
-                            Thread.sleep(60000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-
-
-                        }                    }
-               }
-            }
+               while(true) {
+                   try {
+                       Thread.sleep(60000);
+                   } catch (InterruptedException e) {
+                       e.printStackTrace();
+                   }
+                   SQLiteHandler.getDB(context).ReSyncronize();
+               }}
         };
        thread.start();
     }

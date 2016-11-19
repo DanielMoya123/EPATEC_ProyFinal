@@ -1,3 +1,4 @@
+var ip = "http://192.168.43.210:8080/Construtec.asmx/Parsear?frase="; 
 (function(){
     var app = angular.module('starter.stadisticcontrol', [])
         app.factory('StadisticControl', function(){
@@ -6,7 +7,6 @@
         var itemsSPO = [];
             return {
                 updateBS: function($http) {
-                    var ip = "http://webserviceepatec.azurewebsites.net/EPATEC.asmx/Parsear?frase=";
                     var peticion = "masvendido"
                     
                     var request = "";
@@ -17,7 +17,7 @@
                             console.log('Get Post', response);
                             console.log("Get Post status", response.data);
                             var data = response.data;
-                            var result = data.substring(70, data.length - 9);
+                            var result = data.substring(76, data.length - 9);
                             console.log("Get Post status", result);
                             var result2 = angular.fromJson(result);
                             console.log("Get Post status 2", result2);                            
