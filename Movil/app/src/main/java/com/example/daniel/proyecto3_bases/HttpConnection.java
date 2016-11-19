@@ -1,5 +1,4 @@
 package com.example.daniel.proyecto3_bases;
-import android.os.AsyncTask;
 
 import org.json.JSONArray;
 
@@ -13,17 +12,16 @@ import java.net.URL;
  */
 
 public class HttpConnection{
-     static String urls ="http://webserviceepatec.azurewebsites.net/EPATEC.asmx/Parsear?frase=";
+     static String urls ="http://172.19.13.120:8080/Construtec.asmx/Parsear?frase=";
 
     public static JSONArray getAns(String msj){
         String realOutput="";
         HttpURLConnection con=null;
         BufferedReader reader=null;
 
-        //"http://172.19.13.120:8080/Construtec.asmx/ListarClientes"
         try {
 
-            URL url = new URL(urls+"listar/prueba");
+            URL url = new URL(urls+msj);
            con = (HttpURLConnection) url.openConnection();
             con.setDoOutput(true);
             con.setRequestMethod("GET");
