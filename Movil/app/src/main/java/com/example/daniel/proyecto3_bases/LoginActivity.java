@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Rsync(this);
+
 
 
         super.onCreate(savedInstanceState);
