@@ -228,13 +228,13 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void UpSyncronize() throws JSONException, InterruptedException {
         UpUsers();
-        /*UpProducts();
+        UpProducts();
         UpOrders();
         UpCategory();
         UpProviderPro();
         UpRol();
         UpUseRol();
-        UpOrderPro();*/
+        UpOrderPro();
     }
 
 
@@ -242,95 +242,114 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public boolean UpUsers() throws JSONException, InterruptedException {
 
         String query = "listar/clientes";
-        HttpConnection http=new HttpConnection();
-
         JSONArray jsonArray= HttpConnection.getAns(query);
 
-        for(int i=0;i<jsonArray.length();i++){
-            JSONObject item=jsonArray.getJSONObject(i);
-            addUser(new Users(item.getString("_id"),item.getString("_name"), item.getString("_lastName1"), item.getString("_lastName2"), item.getString("_cellPhone"), item.getString("_identityNumber"),item.getString( "_username"), item.getString( "_password"),item.getString( "_birthDate"),item.getString( "_office"), item.getString( "_residenceAddress"),item.getString( "penalty")));
-        }
+
+        if (jsonArray!=null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+                addUser(new Users(item.getString("_id"), item.getString("_name"), item.getString("_lastName1"), item.getString("_lastName2"), item.getString("_cellPhone"), item.getString("_identityNumber"), item.getString("_username"), item.getString("_password"), item.getString("_birthDate"), item.getString("_office"), item.getString("_residenceAddress"), item.getString("penalty")));
+            }
+
             return true;
-    }
-/*
+        }else {
+            System.out.println("esta vara salio false");
+            return false;
+        }
+        }
+
     public boolean UpProducts() throws JSONException {
         String query="listar/productos";
-        String ans=GET.request(query);
-        JSONArray jsonArray = new JSONArray(ans);
-        for(int i=0;i<jsonArray.length();i++){
-            JSONObject item=jsonArray.getJSONObject(i);
-            addProduct(new Products(item.getString("_id"),item.getBoolean("_nontaxable"), item.getString("_office"), item.getString("_description"), item.getString("_categoryId"), item.getInt("_amount"),item.getInt( "price")));
-        }
-        return true;
+        JSONArray jsonArray= HttpConnection.getAns(query);
+
+        if (jsonArray!=null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+                addProduct(new Products(item.getString("_id"), item.getBoolean("_nontaxable"), item.getString("_office"), item.getString("_description"), item.getString("_categoryId"), item.getInt("_amount"), item.getInt("price")));
+            }
+            return true;
+
+        }else return false;
     }
 
     public boolean UpOrders() throws JSONException {
         String query="listar/pedidos";
-        String ans=GET.request(query);
-        JSONArray jsonArray = new JSONArray(ans);
-        for(int i=0;i<jsonArray.length();i++){
-            JSONObject item=jsonArray.getJSONObject(i);
-            addOrder(new Orders(item.getString("_id"),item.getString("_office"),item.getString("_clientId"),item.getString("_sellerId"),item.getBoolean("penalty"),item.getString("_creationTime")));
-        }
-        return true;
+        JSONArray jsonArray= HttpConnection.getAns(query);
+
+        if (jsonArray!=null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+                addOrder(new Orders(item.getString("_id"), item.getString("_office"), item.getString("_clientId"), item.getString("_sellerId"), item.getBoolean("penalty"), item.getString("_creationTime")));
+            }
+            return true;
+        }else return false;
 
     }
 
     public boolean UpCategory() throws JSONException {
         String query="listar/categorias";
-        String ans=GET.request(query);
-        JSONArray jsonArray = new JSONArray(ans);
-        for(int i=0;i<jsonArray.length();i++){
-            JSONObject item=jsonArray.getJSONObject(i);
-            addCategory(new Category(item.getString("_id"),item.getString("_description")));
-        }
-        return true;
+        JSONArray jsonArray= HttpConnection.getAns(query);
+
+        if (jsonArray!=null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+                addCategory(new Category(item.getString("_id"), item.getString("_description")));
+            }
+            return true;
+        }else return false;
 
     }
 
     public boolean UpProviderPro() throws JSONException {
         String query="listar/PROVIDER_PRODUCTS";
-        String ans=GET.request(query);
-        JSONArray jsonArray = new JSONArray(ans);
-        for(int i=0;i<jsonArray.length();i++){
-            JSONObject item=jsonArray.getJSONObject(i);
-            addProvidersPro(item.getString("_providerId"),item.getString("_productId"));
-        }
-        return true;
+        JSONArray jsonArray= HttpConnection.getAns(query);
+
+        if (jsonArray!=null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+                addProvidersPro(item.getString("_providerId"), item.getString("_productId"));
+            }
+            return true;
+        }else return false;
     }
 
     public boolean UpRol() throws JSONException {
         String query="listar/ROL";
-        String ans=GET.request(query);
-        JSONArray jsonArray = new JSONArray(ans);
-        for(int i=0;i<jsonArray.length();i++){
-            JSONObject item=jsonArray.getJSONObject(i);
-            addRol(item.getString("_id"),item.getString("_description"));
-        }
-        return true;
+
+        JSONArray jsonArray= HttpConnection.getAns(query);
+        if (jsonArray!=null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+                addRol(item.getString("_id"), item.getString("_description"));
+            }
+            return true;
+        }else return false;
     }
 
     public boolean UpUseRol() throws JSONException {
         String query="listar/USER_ROL";
-        String ans=GET.request(query);
-        JSONArray jsonArray = new JSONArray(ans);
-        for(int i=0;i<jsonArray.length();i++){
-            JSONObject item=jsonArray.getJSONObject(i);
-            addUseRol(item.getString("_user_id"),item.getString("rol_id"));
-        }
-        return true;
+        JSONArray jsonArray= HttpConnection.getAns(query);
+        if (jsonArray!=null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+                addUseRol(item.getString("_user_id"), item.getString("rol_id"));
+            }
+            return true;
+        }else return false;
     }
 
     public boolean UpOrderPro() throws JSONException {
         String query="listar/WISH_PRODUCTS";
-        String ans=GET.request(query);
-        JSONArray jsonArray = new JSONArray(ans);
-        for(int i=0;i<jsonArray.length();i++){
-            JSONObject item=jsonArray.getJSONObject(i);
-            addOrderPro(item.getString("_wishId"),item.getString("_productId"),item.getInt("numberOfProducts"));
-        }
-        return true;
-    }*/
+        JSONArray jsonArray= HttpConnection.getAns(query);
+        if (jsonArray!=null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject item = jsonArray.getJSONObject(i);
+                addOrderPro(item.getString("_wishId"), item.getString("_productId"), item.getInt("numberOfProducts"));
+            }
+            return true;
+        }else return false;
+
+    }
 
     public List<Users> getUsers(){
         List<Users> usrl = new ArrayList<Users>();
