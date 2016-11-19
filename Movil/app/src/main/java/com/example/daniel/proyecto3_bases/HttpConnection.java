@@ -20,10 +20,10 @@ public class HttpConnection{
         HttpURLConnection con=null;
         BufferedReader reader=null;
 
-
+        //"http://172.19.13.120:8080/Construtec.asmx/ListarClientes"
         try {
 
-            URL url = new URL("http://172.19.13.120:8080/Construtec.asmx/ListarClientes");
+            URL url = new URL(urls+"listar/prueba");
            con = (HttpURLConnection) url.openConnection();
             con.setDoOutput(true);
             con.setRequestMethod("GET");
@@ -60,6 +60,5 @@ public class HttpConnection{
             System.out.println(e.toString());
             return null;
         }
-
     }
 }

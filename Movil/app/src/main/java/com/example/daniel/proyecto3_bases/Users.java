@@ -18,6 +18,7 @@ public class Users {
     public String _username;
     public String _birthDate;
     public String penalty;
+    public String rol;
 
 
     public Users(String _id,String _name, String _lastName1, String _lastName2, String _cellPhone, String _identityNumber,String _username, String _password,String _birthDate,String _office, String _residenceAddress,String penalty){

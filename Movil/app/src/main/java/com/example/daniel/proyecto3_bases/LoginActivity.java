@@ -5,17 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
 
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -33,8 +24,11 @@ import android.widget.TextView;
 
 import org.json.JSONException;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -69,9 +63,7 @@ public class LoginActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
-        sync(this);
+        Rsync(this);
 
 
         super.onCreate(savedInstanceState);
@@ -104,15 +96,13 @@ public class LoginActivity extends AppCompatActivity{
         mProgressView = findViewById(R.id.login_progress);
     }
 
-
-
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
 
-    public void sync(final Context context){
+    public void Msync(final Context context){
         Thread thread = new Thread() {
             @Override
             public void run() {
@@ -127,10 +117,36 @@ public class LoginActivity extends AppCompatActivity{
             }
         };
         thread.start();
+    }
+
+    public void Rsync(final Context context){
+
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+               while(true){
+                        SQLiteHandler.getDB(context).ReSyncronize();
+                        try {
+                            Thread.sleep(60000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+
+                    }
+               }
+            }
+        };
+       thread.start();
 
 
     }
 
+
+
+    public void Bsync(final Context context) {
+
+
+    }
 
 
     private void attemptLogin() {

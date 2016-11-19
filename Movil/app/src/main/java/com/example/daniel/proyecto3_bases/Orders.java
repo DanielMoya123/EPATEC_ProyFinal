@@ -1,5 +1,10 @@
 package com.example.daniel.proyecto3_bases;
 
+import android.util.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by ferllini13 on 16/11/2016.
  */
@@ -12,6 +17,7 @@ public class Orders {
     public String _sellerId;
     public boolean penalty;
     public String _creationTime;
+    List<Pair<String,String>> pro= new ArrayList<Pair<String,String>>();
 
     public Orders(String _id, String _office, String _clientId, String _sellerId, boolean penalty, String _creationTime){
         this._id=_id;

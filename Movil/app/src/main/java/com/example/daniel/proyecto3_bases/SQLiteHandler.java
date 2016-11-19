@@ -5,19 +5,28 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Pair;
 
 import org.json.*;
+
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Created by ferllini13 on 14/11/2016.
  */
 
 public class SQLiteHandler extends SQLiteOpenHelper {
+    List<Pair<String,Users>> UpUser = new ArrayList<Pair<String,Users>>();
+    List<Pair<String,Category>> UpCegoty = new ArrayList<Pair<String,Category>>();
+    List<Pair<String,Products>> UpProduct = new ArrayList<Pair<String,Products>>();
+    List<Pair<String,Orders>> UpOrder = new ArrayList<Pair<String,Orders>>();
+
     private static SQLiteHandler SQLiteHandler;
     private HttpConnection GET;
-    //SQLiteDatabase db;
 
 
     public SQLiteHandler(Context ctx){
@@ -236,6 +245,98 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         UpUseRol();
         UpOrderPro();
     }
+
+    public void ReSyncronize(){
+        sendUsers();
+        sendProducts();
+        sendCategoties();
+        sendOrders();
+
+    }
+    private boolean ifConect(){
+        boolean status = false;
+        try {
+            URL u = new URL("https://www.google.com/");
+            HttpsURLConnection con = (HttpsURLConnection) u.openConnection();
+            con.connect();
+            status = true;
+        } catch (Exception e){
+            System.out.println(e.toString());
+        }
+        return status;
+    }
+
+    public void sendUsers(){
+        for (int x=0;x<2;x++) {
+            if (UpUser.size() != 0 && ifConect()) {
+                SQLiteDatabase db = this.getReadableDatabase();
+                for (int i = 0; i < UpUser.size(); i++) {
+                    String query = "crear/cliente/"+UpUser.get(i).second._id+"/"+UpUser.get(i).second._name+"/"+UpUser.get(i).second._lastName1+"/"+UpUser.get(i).second._lastName2+"/"+UpUser.get(i).second._cellPhone+"/"+UpUser.get(i).second._identityNumber+"/"+UpUser.get(i).second._residenceAddress+"/"+UpUser.get(i).second._birthDate+"/"+UpUser.get(i).second.rol+"/"+UpUser.get(i).second._password+"/"+UpUser.get(i).second._username;
+
+                    try {
+                        JSONArray jsonArray = HttpConnection.getAns(query);
+                    } catch (Exception e) {
+                        UpUser.remove(UpUser.get(i));
+                    }
+                }
+            }
+        }
+    }
+
+    public void sendProducts(){
+        for (int x=0;x<2;x++) {
+            if (UpUser.size() != 0 && ifConect()) {
+                SQLiteDatabase db = this.getReadableDatabase();
+                for (int i = 0; i < UpUser.size(); i++) {
+                    String query = "";
+
+                    try {
+                        JSONArray jsonArray = HttpConnection.getAns(query);
+                    } catch (Exception e) {
+                        UpUser.remove(UpUser.get(i));
+                    }
+                }
+            }
+        }
+    }
+    public void sendCategoties(){
+        for (int x=0;x<2;x++) {
+            if (UpUser.size() != 0 && ifConect()) {
+                SQLiteDatabase db = this.getReadableDatabase();
+                for (int i = 0; i < UpUser.size(); i++) {
+                    String query = "";
+
+                    try {
+                        JSONArray jsonArray = HttpConnection.getAns(query);
+                    } catch (Exception e) {
+                        UpUser.remove(UpUser.get(i));
+                    }
+                }
+            }
+        }
+    }
+
+    public void sendOrders(){
+        for (int x=0;x<2;x++) {
+            if (UpUser.size() != 0 && ifConect()) {
+                SQLiteDatabase db = this.getReadableDatabase();
+                for (int i = 0; i < UpUser.size(); i++) {
+                    String query = "";
+
+                    try {
+                        JSONArray jsonArray = HttpConnection.getAns(query);
+                    } catch (Exception e) {
+                        UpUser.remove(UpUser.get(i));
+                    }
+                }
+            }
+        }
+    }
+
+    public void DownSyncronize(){
+
+    }
+
 
 
 
@@ -489,12 +590,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 "delete from GENERAL_USER\n" +
                 "where _id ="+id;
         db.rawQuery(query, null);
-    }
-
-
-
-    public void syncronize(){
-
     }
 
 
