@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ProductsActivity extends AppCompatActivity {
     private EditText mProductName;
@@ -88,7 +89,10 @@ public class ProductsActivity extends AppCompatActivity {
         String productName = mProductName.getText().toString();
         String productQuantity = mProductQuantity.getText().toString();
         String productCatId = mProductCatId.getText().toString();
-        Products producto = new Products("12313",taxable,"Cartago",productName,productCatId,1,100);
+        Random rand = new Random();
+        int n = rand.nextInt(10000);
+        String id = Integer.toString(n);
+        Products producto = new Products(id,taxable,"Cartago",productName,productCatId,1,100);
         SQLiteHandler handler = new SQLiteHandler(this);
 
         handler.addProduct(producto);

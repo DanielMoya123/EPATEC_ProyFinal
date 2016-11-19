@@ -24,6 +24,7 @@ public class Orders {
         this._office=_office;
         this._clientId=_clientId;
         this.penalty= penalty;
+        this._sellerId = _sellerId;
         this._creationTime=_creationTime;
 
 

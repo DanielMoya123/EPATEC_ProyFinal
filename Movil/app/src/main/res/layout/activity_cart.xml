@@ -23,14 +23,68 @@
 
 
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/listviewCart"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </ListView>
 
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <AutoCompleteTextView
+            android:id="@+id/client_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Client id"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:id="@+id/seller_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Seller id"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:text="Select the branch office"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp" />
+
+    <Spinner
+        android:id="@+id/spinnerOffice2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
+    <Button
+        android:id="@+id/buy_products"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Buy products"
+        android:textStyle="bold" />
 
 
 
 </android.support.design.widget.CoordinatorLayout>
+
+
+
+

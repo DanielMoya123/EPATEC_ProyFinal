@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CategoriesActivity extends AppCompatActivity {
     private EditText mCatName;
@@ -74,7 +75,10 @@ public class CategoriesActivity extends AppCompatActivity {
 
     private void createCategory(){
         String cat_name = mCatName.getText().toString();
-        Category categoria = new Category("1231656",cat_name);
+        Random rand = new Random();
+        int n = rand.nextInt(10000);
+        String id = Integer.toString(n);
+        Category categoria = new Category(id,cat_name);
         SQLiteHandler handler = new SQLiteHandler(this);
         handler.addCategory(categoria);
     }

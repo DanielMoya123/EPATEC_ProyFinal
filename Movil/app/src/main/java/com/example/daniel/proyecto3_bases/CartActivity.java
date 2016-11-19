@@ -14,18 +14,23 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Random;
 
 
 public class CartActivity extends AppCompatActivity {
     private ArrayList<String> data = new ArrayList<String>();
+    private EditText mSellerId;
+    private EditText mClientId;
+    private String office2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,25 @@ public class CartActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        List<Products> listUsers;
+        ArrayList listUsersFinal = new ArrayList();
+
+
+
+        SQLiteHandler SQLite = new SQLiteHandler(this);
+
+        listUsers = SQLite.getProducts();
+        System.out.println("length es: "+listUsers.size());
+        for (int i=0; i<listUsers.size(); i++) {
+            listUsersFinal.add(listUsers.get(i)._description);
+        }
+
+        ListView listCart = (ListView)findViewById(R.id.listviewCart);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsersFinal);
+        listCart.setAdapter(adapter);
+
+
         ListView lv = (ListView) findViewById(R.id.listview);
         generateListContent();
         lv.setAdapter(new MyListAdaper(this, R.layout.content_cart, data));
@@ -46,11 +70,48 @@ public class CartActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "List item was clicked at " + position, Toast.LENGTH_SHORT).show();
             }
         });
+
+        Spinner dropdown2 = (Spinner) findViewById(R.id.spinnerOffice2);
+        String[] office = new String[]{"San Jose", "Cartago", "Alajuela", "Heredia", "Guanacaste", "Puntarenas", "Limón"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, office);
+        dropdown2.setAdapter(adapter2);
+
+        office2 = dropdown2.getSelectedItem().toString();
+
+        mSellerId = (EditText) findViewById(R.id.seller_id);
+        mClientId = (EditText) findViewById(R.id.client_id);
+
+        Button mSignInButton = (Button) findViewById(R.id.buy_products);
+        mSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createOrder(office2);
+            }
+        });
+
+    }
+
+    private void createOrder(String office2) {
+        String seller_id = mSellerId.getText().toString();
+        String client_id = mClientId.getText().toString();
+
+        Random rand = new Random();
+        int n = rand.nextInt(10000);
+        String id = Integer.toString(n);
+
+        Orders orden = new Orders(id,office2,client_id,seller_id,false,"10-10-10");
+
     }
 
     private void generateListContent() {
-            data.add("This is row number " + i);
+        List<Products> listUsers;
+        SQLiteHandler SQLite = new SQLiteHandler(this);
 
+        listUsers = SQLite.getProducts();
+        System.out.println("length es: "+listUsers.size());
+        for (int i=0; i<listUsers.size(); i++) {
+            data.add(listUsers.get(i)._description);
+        }
     }
 /*
     @Override

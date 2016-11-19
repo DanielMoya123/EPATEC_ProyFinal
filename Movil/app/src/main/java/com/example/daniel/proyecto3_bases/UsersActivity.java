@@ -24,6 +24,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class UsersActivity extends AppCompatActivity {
     private ArrayList<String> data = new ArrayList<String>();
@@ -49,21 +50,21 @@ public class UsersActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-       /* SQLiteHandler SQLite = new SQLiteHandler(this);
+        SQLiteHandler SQLite = new SQLiteHandler(this);
 
-        List<Category> listUsers;
+        List<Users> listUsers;
         ArrayList listUsersFinal = new ArrayList();
 
-        listUsers = SQLite.getCategories();
+        listUsers = SQLite.getUsers();
         System.out.println("length es: "+listUsers.size());
         for (int i=0; i<listUsers.size(); i++) {
-            listUsersFinal.add(listUsers.get(i)._description);*/
-       /* }
+            listUsersFinal.add(listUsers.get(i)._name);
+       }
 
         ListView listCart = (ListView)findViewById(R.id.allUsers);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsersFinal);
-        listCart.setAdapter(adapter); */
+        listCart.setAdapter(adapter);
 /*
         int totalHeight = 0;
         int desiredWidth = View.MeasureSpec.makeMeasureSpec(listCart.getWidth(), View.MeasureSpec.AT_MOST);
@@ -133,7 +134,10 @@ public class UsersActivity extends AppCompatActivity {
         String userBirth = mUserBirth.getText().toString();
         String userPassword = mUserPassword.getText().toString();
 
-        Users usuario = new Users("12345673123",userName,userLast1,userLast2,userPhone,userIdentity,"usuario",userPassword,userBirth,office2,userAddress,"0");
+        Random rand = new Random();
+        int n = rand.nextInt(10000);
+        String id = Integer.toString(n);
+        Users usuario = new Users(id,userName,userLast1,userLast2,userPhone,userIdentity,"usuario",userPassword,userBirth,office2,userAddress,"0");
         SQLiteHandler handler = new SQLiteHandler(this);
         handler.addUser(usuario);
 

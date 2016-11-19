@@ -15,9 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/list_item_textUser"
-        android:layout_toRightOf="@+id/list_item_thumbnail"
-        android:layout_toEndOf="@+id/list_item_thumbnail" />
+        android:id="@+id/list_item_textUser" />
 
     <Button
         android:layout_width="wrap_content"
