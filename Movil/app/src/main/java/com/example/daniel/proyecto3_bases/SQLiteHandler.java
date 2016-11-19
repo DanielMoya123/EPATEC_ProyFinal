@@ -135,7 +135,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         if (SQLiteHandler == null){
             SQLiteHandler = new SQLiteHandler(context);
         }
-
         return SQLiteHandler;
     }
 

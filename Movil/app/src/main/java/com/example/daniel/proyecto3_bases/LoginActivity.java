@@ -3,6 +3,7 @@ package com.example.daniel.proyecto3_bases;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -29,6 +30,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +68,12 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+        sync(this);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
@@ -102,6 +111,28 @@ public class LoginActivity extends AppCompatActivity{
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
+
+    public void sync(final Context context){
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+
+                try {
+                    SQLiteHandler.getDB(context).UpSyncronize();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+
+
+    }
+
+
+
     private void attemptLogin() {
 
         // Reset errors.
