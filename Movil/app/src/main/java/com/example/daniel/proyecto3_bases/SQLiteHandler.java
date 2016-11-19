@@ -289,18 +289,18 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void sendProducts(){
         for (int x=0;x<2;x++) {
-            if (UpUser.size() != 0 && ifConect()) {
+            if (UpProduct.size() != 0 && ifConect()) {
                 SQLiteDatabase db = this.getReadableDatabase();
-                for (int i = 0; i < UpUser.size(); i++) {
+                for (int i = 0; i < UpProduct.size(); i++) {
                     String query;
-                    if (UpCate.get(i).first == "del"){
-                        query="eliminar/producto/"+UpCate.get(i).second._id;
+                    if (UpProduct.get(i).first == "del"){
+                        query="eliminar/producto/"+UpProduct.get(i).second._id;
                     }else
                         query = "crear/producto/"+UpProduct.get(i).second._categoryId+"/"+UpProduct.get(i).second._providerId+"/"+UpProduct.get(i).second._id+"/"+UpProduct.get(i).second._providerId+"/"+UpProduct.get(i).second._amount+"/"+UpProduct.get(i).second._office+"/"+UpProduct.get(i).second._description;
                     try {
                         JSONArray jsonArray = HttpConnection.getAns(query);
                     } catch (Exception e) {
-                        UpUser.remove(UpUser.get(i));
+                        UpProduct.remove(UpProduct.get(i));
                     }
                 }
             }
@@ -309,9 +309,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void sendCategoties(){
         for (int x=0;x<2;x++) {
-            if (UpUser.size() != 0 && ifConect()) {
+            if (UpCate.size() != 0 && ifConect()) {
                 SQLiteDatabase db = this.getReadableDatabase();
-                for (int i = 0; i < UpUser.size(); i++) {
+                for (int i = 0; i < UpCate.size(); i++) {
                     String query;
                     if (UpCate.get(i).first== "del"){
                         query="eliminar/categoria/"+UpCate.get(i).second._id;
@@ -329,17 +329,28 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         }
     }
 
-    public void sendOrders(){
-        for (int x=0;x<2;x++) {
-            if (UpUser.size() != 0 && ifConect()) {
+    public void sendOrders() {
+        for (int x = 0; x < 2; x++) {
+            if (UpOrder.size() != 0 && ifConect()) {
                 SQLiteDatabase db = this.getReadableDatabase();
-                for (int i = 0; i < UpUser.size(); i++) {
-                    String query = "";
+                for (int i = 0; i < UpOrder.size(); i++) {
+                    String query;
+                    if (UpOrder.get(i).first == "del") {
+                        query = "eliminar/pedido/" + UpOrder.get(i).second._id;
+                    } else {
+                        query = "crear/pedido/" + UpOrder.get(i).second._clientId + "/" + UpOrder.get(i).second._id + "/" + UpOrder.get(i).second._office + "/" + UpOrder.get(i).second._creationTime + "/" + UpOrder.get(i).second.penalty;
+                        String query2;
+                        for (int c = 0; c < UpOrder.get(i).second.pro.size(); c++) {
+                            query2 = "actualizarproductopedido/" + UpOrder.get(i).second.pro.get(c).first + "/" + UpOrder.get(i).second._id + "/" + UpOrder.get(i).second.pro.get(c).second;
+                            JSONArray jsonArray2 = HttpConnection.getAns(query2);
+                        }
 
-                    try {
-                        JSONArray jsonArray = HttpConnection.getAns(query);
-                    } catch (Exception e) {
-                        UpUser.remove(UpUser.get(i));
+                        try {
+                            JSONArray jsonArray = HttpConnection.getAns(query);
+
+                        } catch (Exception e) {
+                            UpOrder.remove(UpOrder.get(i));
+                        }
                     }
                 }
             }
@@ -347,7 +358,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     public void DownSyncronize(){
-
+        ReSyncronize();
     }
 
 
