@@ -6,6 +6,7 @@ var ip = "http://192.168.43.210:8080/Construtec.asmx/Parsear?frase=";
         var itemsCart = [];
             return {
                 update: function($http) {
+                    items = []
                     var peticion = "listar,productos"
                     var request = "";
                     request = request.concat(ip, peticion);

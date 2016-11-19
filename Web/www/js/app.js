@@ -519,7 +519,7 @@ $scope.items = ProductsControl.list();
     var itemsFinal = $scope.itemsFinal = [];
     var currentCharCode = ' '.charCodeAt(0) - 1;
     var letterHasMatch = {};  
-    
+    $scope.items = [];
     function addDelay() {
         $scope.items
         .sort(function(a, b) {

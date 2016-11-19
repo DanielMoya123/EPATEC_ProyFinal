@@ -5,6 +5,7 @@ var ip = "http://192.168.43.210:8080/Construtec.asmx/Parsear?frase=";
         var items = [];
             return {
                 update: function($http) {
+                    items = []
                     var peticion = "listar,clientes"
                     var request = "";
                     request = request.concat(ip, peticion);

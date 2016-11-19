@@ -5,6 +5,7 @@ var ip = "http://192.168.43.210:8080/Construtec.asmx/Parsear?frase=";
         var items = [];
             return {
                 update: function($http, office) {
+                    items = []
                     //Agregar peticion para este tipo
                     var peticion = "pedidosporoficina/"
                     var request = "";
