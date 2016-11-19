@@ -22,7 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.data;
+
 
 public class CartActivity extends AppCompatActivity {
     private ArrayList<String> data = new ArrayList<String>();

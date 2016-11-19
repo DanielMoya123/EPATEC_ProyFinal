@@ -1,15 +1,21 @@
 package com.example.daniel.proyecto3_bases;
 
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.view.ViewGroup;
 
@@ -19,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsersActivity extends AppCompatActivity {
-
+    private ArrayList<String> data = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +36,7 @@ public class UsersActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        SQLiteHandler SQLite = new SQLiteHandler(this);
+       /* SQLiteHandler SQLite = new SQLiteHandler(this);
 
         List<Category> listUsers;
         ArrayList listUsersFinal = new ArrayList();
@@ -44,8 +50,8 @@ public class UsersActivity extends AppCompatActivity {
         ListView listCart = (ListView)findViewById(R.id.allUsers);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, listUsersFinal);
-        listCart.setAdapter(adapter);
-
+        listCart.setAdapter(adapter); */
+/*
         int totalHeight = 0;
         int desiredWidth = View.MeasureSpec.makeMeasureSpec(listCart.getWidth(), View.MeasureSpec.AT_MOST);
         for (int i = 0; i < adapter.getCount(); i++) {
@@ -58,9 +64,7 @@ public class UsersActivity extends AppCompatActivity {
         ViewGroup.LayoutParams params = listCart.getLayoutParams();
         params.height = totalHeight + (listCart.getDividerHeight() * (adapter.getCount() - 1));
         listCart.setLayoutParams(params);
-        listCart.requestLayout();
-
-
+        listCart.requestLayout();*/
 
 
 
@@ -75,6 +79,67 @@ public class UsersActivity extends AppCompatActivity {
         dropdown2.setAdapter(adapter2);
 
 
+        ListView lv = (ListView) findViewById(R.id.listviewUsers);
+        generateListContent();
+        lv.setAdapter(new MyListAdaper(this, R.layout.content_users, data));
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "List item was clicked at " + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    private void generateListContent() {
+
+        SQLiteHandler SQLite = new SQLiteHandler(this);
+
+        List<Users> listUsers;
+        listUsers = SQLite.getUsers();
+
+        for(int i = 0; i < 55; i++) {
+            data.add(listUsers.get(i)._name);
+        }
+    }
+
+    private class MyListAdaper extends ArrayAdapter<String> {
+        private int layout;
+        private List<String> mObjects;
+        private MyListAdaper(Context context, int resource, List<String> objects) {
+            super(context, resource, objects);
+            mObjects = objects;
+            layout = resource;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            UsersActivity.ViewHolder mainViewholder = null;
+            if(convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                convertView = inflater.inflate(layout, parent, false);
+                UsersActivity.ViewHolder viewHolder = new UsersActivity.ViewHolder();
+                viewHolder.title = (TextView) convertView.findViewById(R.id.list_item_textUser);
+                viewHolder.button = (Button) convertView.findViewById(R.id.list_item_btnUser);
+                convertView.setTag(viewHolder);
+            }
+            mainViewholder = (UsersActivity.ViewHolder) convertView.getTag();
+            mainViewholder.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getContext(), "Button was clicked for list item " + position, Toast.LENGTH_SHORT).show();
+                }
+            });
+            mainViewholder.title.setText(getItem(position));
+
+            return convertView;
+        }
+    }
+    public class ViewHolder {
+
+        TextView title;
+        Button button;
     }
 
 }

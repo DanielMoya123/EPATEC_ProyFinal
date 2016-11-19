@@ -27,7 +27,6 @@
         android:layout_height="match_parent">
     </ListView>
 
-    <include layout="@layout/content_cart" />
 
 
 </android.support.design.widget.CoordinatorLayout>
