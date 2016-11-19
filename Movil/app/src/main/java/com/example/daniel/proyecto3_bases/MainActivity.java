@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 try {
-                    SQLiteHandler.getDB(this).downSincronize();
+                    SQLiteHandler.getDB(getApplicationContext()).DownSyncronize();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
