@@ -37,10 +37,10 @@ public class ProductsActivity extends AppCompatActivity {
 
         SQLiteHandler SQLite = new SQLiteHandler(this);
 
-        List<Category> listUsers;
+        List<Products> listUsers;
         ArrayList listUsersFinal = new ArrayList();
 
-        listUsers = SQLite.getCategories();
+        listUsers = SQLite.getProducts();
         System.out.println("length es: "+listUsers.size());
         for (int i=0; i<listUsers.size(); i++) {
             listUsersFinal.add(listUsers.get(i)._description);
