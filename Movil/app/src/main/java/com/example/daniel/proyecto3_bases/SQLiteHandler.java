@@ -149,7 +149,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public void addUser(Users urs) {
         ContentValues values = new ContentValues();
-
         values.put("_id", urs._id);
         values.put("_name",urs._name );
         values.put("_lastName1", urs._lastName1);
@@ -164,6 +163,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_residenceAddress", urs._residenceAddress);
 
         insertData(urs.table, values);
+        addUseRol(urs._id,urs.rol);
+
     }
 
     public void addProduct(Products pro) {
