@@ -13,6 +13,7 @@ public class Products {
     public String _categoryId;
     public int _amount;
     public int price;
+    public String _providerId;
 
 
     public Products(String _id, boolean _nontaxable, String _office, String _description, String _categoryId, int _amount,int price){
