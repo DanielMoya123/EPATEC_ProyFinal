@@ -28,4 +28,5 @@ dependencies {
     compile 'com.android.support:design:25.0.0'
     testCompile 'junit:junit:4.12'
     compile files('libs/apache-httpcomponents-httpclient.jar')
+    compile files('libs/ksoap2-j2me-core-2.1.2.jar')
 }
