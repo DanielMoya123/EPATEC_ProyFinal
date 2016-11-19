@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity
                 try {
                     SQLiteHandler.getDB(getApplicationContext()).DownSyncronize();
                 } catch (Exception e) {
-                    e.printStackTrace();
+
                 }
             }
-        });
+        });it 
 
         Button mClear = (Button) findViewById(R.id.buttonClear);
         mClear.setOnClickListener(new View.OnClickListener() {

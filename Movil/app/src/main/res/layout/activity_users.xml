@@ -32,13 +32,7 @@
 
     <include layout="@layout/content_users" /> -->
 
-    <ScrollView
-        android:id="@+id/cat_form"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+
 
     <LinearLayout
         android:id="@+id/email_login_form"
@@ -50,6 +44,14 @@
             android:id="@+id/allUsers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></ListView>
+
+        <ScrollView
+            android:id="@+id/cat_form"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
         <TextView
             android:text="Create a new user"
@@ -232,9 +234,9 @@
             android:text="Add user"
             android:textStyle="bold" />
 
-
+        </ScrollView>
 
     </LinearLayout>
-    </ScrollView>
+
 
 </android.support.design.widget.CoordinatorLayout>
