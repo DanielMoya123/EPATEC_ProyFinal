@@ -35,15 +35,17 @@
         android:layout_width="270dp"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btnRemove"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="borrar"
-            android:onClick="btnRemoveClick"
-            />
+
     </ListView>
+
+            <Button
+                android:id="@+id/btnRemove"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="borrar"
+                android:onClick="btnRemoveClick"
+                />
 
         </LinearLayout>
 
