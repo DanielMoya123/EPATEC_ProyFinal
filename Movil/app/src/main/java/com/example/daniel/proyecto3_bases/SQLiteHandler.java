@@ -27,6 +27,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     private static SQLiteHandler SQLiteHandler;
     private HttpConnection GET;
+    SQLiteDatabase db;
 
 
     public SQLiteHandler(Context ctx){
@@ -34,6 +35,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         GET = new HttpConnection();
         //db = getWritableDatabase();
         //onCreate(db);
+        db = getWritableDatabase();
     }
 
 
