@@ -1289,7 +1289,7 @@ $scope.addUser=function(Uname,lname1,lname2,phone,address,inum,bdate,type,passwo
                             console.log("Get Post status 2", result2); 
                     
                             if (result2.length===0){
-                                registry(Uname,lname1,lname2,phone,address,inum,bdate,type,password,office);
+                                registry(Uname,lname1,lname2,phone,address,inum,bdate,type,"123",office);
                                 
                             }else{
                                 alert("Identity number already in use")
@@ -1299,10 +1299,10 @@ $scope.addUser=function(Uname,lname1,lname2,phone,address,inum,bdate,type,passwo
 function registry(Uname,lname1,lname2,phone,address,inum,bdate,type,password,office){
 							var form = document.getElementById("myForm3");
                             var request2 = "";
-                            var peticion2 = "crear/cliente/_id/"
+                            var peticion2 = "crear/cliente/"
                             var newid = new Date().getTime().toString().slice(2,12);
                             //crear/cliente/id/nombre/ap1/ap2/cell/cedul/residencia/fechaNa/rolid/12-12-12/juanProducto
-                            peticion2 = peticion2.concat(newid,"/_name/",Uname.replace(" ","%20"),"/_lastName1/", lname1,"/_lastName2/",lname2,"/_cellPhone/",phone,"/_identityNumber/",inum,"/_residenceAddress/",address.replace(" ","%20"),"/_birthDate/",bdate,"/_type/",type,"/_password/",password,"/username/",Uname.replace(" ","%20"),newid);
+                            peticion2 = peticion2.concat(newid,"/",Uname.replace(" ","%20"),"/", lname1,"/",lname2,"/",phone,"/",inum,"/",address.replace(" ","%20"),"/",bdate,"/",type,"/",password,"/",Uname.replace(" ","%20"),123);
                                 
                             request2 = request2.concat(ip, peticion2);
                  
@@ -1321,7 +1321,6 @@ function registry(Uname,lname1,lname2,phone,address,inum,bdate,type,password,off
                                     
                                 }else{
                                 form.reset();
-                                $state.go('login');
                                 }
                             });
                                  
