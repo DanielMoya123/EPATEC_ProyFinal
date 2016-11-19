@@ -29,13 +29,12 @@ public class HttpConnection{
             con.setConnectTimeout(10000);
 
 
-            //System.out.println(msj);
 
             int responseCode = con.getResponseCode();
             String responseMessage = con.getResponseMessage();
             System.out.println("\nSending 'GET' request to URL : " + url);
             System.out.println("Response Code : " + responseCode);
-            InputStream input = con.getErrorStream();
+            //InputStream input = con.getErrorStream();
 
 
             BufferedReader in = new BufferedReader(

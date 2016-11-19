@@ -63,8 +63,7 @@ public class LoginActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
+        Rsync(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -108,7 +107,7 @@ public class LoginActivity extends AppCompatActivity{
             public void run() {
 
                 try {
-                    SQLiteHandler.getDB(context).UpSyncronize();
+                    SQLiteHandler.getDB(null).UpSyncronize();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
@@ -137,14 +136,11 @@ public class LoginActivity extends AppCompatActivity{
             }
         };
        thread.start();
-
-
     }
 
 
 
     public void Bsync(final Context context) {
-
 
     }
 

@@ -20,6 +20,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 
 public class SQLiteHandler extends SQLiteOpenHelper {
+    HttpConnection2 http = HttpConnection2.getHttp();
     List<Pair<String,Users>> UpUser = new ArrayList<Pair<String,Users>>();
     List<Pair<String,Category>> UpCate = new ArrayList<Pair<String,Category>>();
     List<Pair<String,Products>> UpProduct = new ArrayList<Pair<String,Products>>();
@@ -32,14 +33,12 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public SQLiteHandler(Context ctx){
         super(ctx,"DB",null,1);
         GET = new HttpConnection();
-        //db = getWritableDatabase();
-        //onCreate(db);
     }
 
-
+    @Override
     public void onCreate(SQLiteDatabase db) {
         System.out.println("Entra al create");
-        String query="CREATE TABLE GENERAL_USER\n" +
+       /* String query = "CREATE TABLE GENERAL_USER\n" +
                 "(\n" +
                 "  _id TEXT UNIQUE NOT NULL,\n" +
                 "  _name TEXT NOT NULL,\n" +
@@ -131,20 +130,62 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 "      REFERENCES PRODUCT (_id),\n" +
                 "\tCONSTRAINT wish_productPK PRIMARY KEY (_wishId,_productId)\n" +
                 ");";
-        //String query = "CREATE TABLE CATEGORY (_id TEXT UNIQUE PRIMARY KEY, _description TEXT );";
-        db.execSQL(query);
+        db.execSQL(query);*/
+        System.out.println("General User  " + GeneralUserString.CREATE_GENERAL_USER);
+        //db.execSQL(GeneralUserString.CREATE_GENERAL_USER);
+        System.out.println("Rol  " + RolString.CREATE_ROL);
+        db.execSQL(RolString.CREATE_ROL);
+        System.out.println("User Rol  " + UserRolString.CREATE_USER_ROL);
+        db.execSQL(UserRolString.CREATE_USER_ROL);
+        System.out.println("Category  " + CategoryString.CREATE_CATEGORY);
+        db.execSQL(CategoryString.CREATE_CATEGORY);
+        System.out.println("Product  " + ProductString.CREATE_PRODUCT);
+        db.execSQL(ProductString.CREATE_PRODUCT);
+        System.out.println("Provider Product  " + ProviderProductString.CREATE_USER_ROL);
+        db.execSQL(ProviderProductString.CREATE_USER_ROL);
+        System.out.println("Wish   " + WishString.CREATE_WISH);
+        db.execSQL(WishString.CREATE_WISH);
+        System.out.println("Wish Product  " + WishProductString.CREATE_USER_ROL);
+        db.execSQL(WishProductString.CREATE_USER_ROL);
     }
 
-    @Override
+    public void createDB(){
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            System.out.println("General User  " + GeneralUserString.CREATE_GENERAL_USER);
+            db.execSQL(GeneralUserString.CREATE_GENERAL_USER);
+            System.out.println("Rol  " + RolString.CREATE_ROL);
+            db.execSQL(RolString.CREATE_ROL);
+            System.out.println("User Rol  " + UserRolString.CREATE_USER_ROL);
+            db.execSQL(UserRolString.CREATE_USER_ROL);
+            System.out.println("Category  " + CategoryString.CREATE_CATEGORY);
+            db.execSQL(CategoryString.CREATE_CATEGORY);
+            System.out.println("Product  " + ProductString.CREATE_PRODUCT);
+            db.execSQL(ProductString.CREATE_PRODUCT);
+            System.out.println("Provider Product  " + ProviderProductString.CREATE_USER_ROL);
+            db.execSQL(ProviderProductString.CREATE_USER_ROL);
+            System.out.println("Wish   " + WishString.CREATE_WISH);
+            db.execSQL(WishString.CREATE_WISH);
+            System.out.println("Wish Product  " + WishProductString.CREATE_USER_ROL);
+            db.execSQL(WishProductString.CREATE_USER_ROL);
+
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
+    }
+
+
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
     }
 
     public static SQLiteHandler getDB(Context context) {
+
         if (SQLiteHandler == null){
             SQLiteHandler = new SQLiteHandler(context);
         }
         return SQLiteHandler;
+
     }
 
     public void addUser(Users urs) {
@@ -208,6 +249,29 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         UpOrder.add(p);
     }
+    public void Drop(){
+
+        String query0="drop table WISH_PRODUCTS";
+        String query1="drop table WISH";
+        String query2="drop table PROVIDER_PRODUCTS";
+        String query3="drop table PRODUCT";
+        String query4="drop table CATEGORY";
+        String query5="drop table USER_ROL";
+        String query6="drop table GENERAL_USER ";
+        String query7="drop table ROL";
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(query0);
+        db.execSQL(query1);
+        db.execSQL(query2);
+        db.execSQL(query3);
+        db.execSQL(query4);
+        db.execSQL(query5);
+        db.execSQL(query6);
+        db.execSQL(query7);
+
+    }
 
     public void addCategory(Category cate){
         ContentValues values = new ContentValues();
@@ -257,14 +321,14 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     public void UpSyncronize() throws JSONException, InterruptedException {
-        UpUsers();
+        /*UpUsers();
         UpProducts();
-        UpOrders();
+        UpOrders();*/
         UpCategory();
-        UpProviderPro();
+        /*UpProviderPro();
         UpRol();
         UpUseRol();
-        UpOrderPro();
+        UpOrderPro();*/
     }
 
     public void ReSyncronize(){
@@ -388,8 +452,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public boolean UpUsers() throws JSONException, InterruptedException {
 
         String query = "listar/clientes";
-        JSONArray jsonArray= HttpConnection.getAns(query);
+        //JSONArray jsonArray= HttpConnection.getAns(query);
 
+        JSONArray jsonArray=http.getAns(query);
 
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -397,16 +462,17 @@ public class SQLiteHandler extends SQLiteOpenHelper {
                 addUser(new Users(item.getString("_id"), item.getString("_name"), item.getString("_lastName1"), item.getString("_lastName2"), item.getString("_cellPhone"), item.getString("_identityNumber"), item.getString("_username"), item.getString("_password"), item.getString("_birthDate"), item.getString("_office"), item.getString("_residenceAddress"), item.getString("penalty")));
             }
 
-            return true;
         }else {
             System.out.println("esta vara salio false");
             return false;
         }
+        return true;
         }
+
 
     public boolean UpProducts() throws JSONException {
         String query="listar/productos";
-        JSONArray jsonArray= HttpConnection.getAns(query);
+        JSONArray jsonArray= http.getAns(query);
 
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -420,7 +486,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public boolean UpOrders() throws JSONException {
         String query="listar/pedidos";
-        JSONArray jsonArray= HttpConnection.getAns(query);
+        JSONArray jsonArray= http.getAns(query);
 
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -434,7 +500,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public boolean UpCategory() throws JSONException {
         String query="listar/categorias";
-        JSONArray jsonArray= HttpConnection.getAns(query);
+        JSONArray jsonArray= http.getAns(query);
 
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -448,7 +514,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public boolean UpProviderPro() throws JSONException {
         String query="listar/PROVIDER_PRODUCTS";
-        JSONArray jsonArray= HttpConnection.getAns(query);
+        JSONArray jsonArray= http.getAns(query);
 
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -462,7 +528,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public boolean UpRol() throws JSONException {
         String query="listar/ROL";
 
-        JSONArray jsonArray= HttpConnection.getAns(query);
+        JSONArray jsonArray= http.getAns(query);
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
@@ -474,7 +540,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public boolean UpUseRol() throws JSONException {
         String query="listar/USER_ROL";
-        JSONArray jsonArray= HttpConnection.getAns(query);
+        JSONArray jsonArray= http.getAns(query);;
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
@@ -486,7 +552,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     public boolean UpOrderPro() throws JSONException {
         String query="listar/WISH_PRODUCTS";
-        JSONArray jsonArray= HttpConnection.getAns(query);
+        JSONArray jsonArray= http.getAns(query);
         if (jsonArray!=null) {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
@@ -641,6 +707,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void insertData (String table  ,ContentValues content) {
         SQLiteDatabase db = this.getWritableDatabase();
         System.out.println("Content: " + content.toString());
+        try{
         db.insert(table, null, content);
+    }catch (Exception e){
+            System.out.println(e.toString());
+        }
     }
+
 }

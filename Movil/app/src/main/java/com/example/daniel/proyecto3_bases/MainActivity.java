@@ -1,5 +1,6 @@
 package com.example.daniel.proyecto3_bases;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -55,7 +56,33 @@ public class MainActivity extends AppCompatActivity
 
     private void sync() throws JSONException, InterruptedException {
         SQLiteHandler SQLite = new SQLiteHandler(this);
-        SQLite.UpSyncronize();
+
+        Msync(this);
+    }
+
+
+    public void Msync(final Context context){
+        try{
+            SQLiteHandler.getDB(context).Drop();
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
+        SQLiteHandler.getDB(context).createDB();
+        Thread thread = new Thread() {
+
+            @Override
+            public void run() {
+
+                try {
+                    SQLiteHandler.getDB(context).UpSyncronize();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
     }
 
     @Override
