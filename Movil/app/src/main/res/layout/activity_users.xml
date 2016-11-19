@@ -234,9 +234,9 @@
             android:text="Add user"
             android:textStyle="bold" />
 
-
+        </ScrollView>
 
     </LinearLayout>
-    </ScrollView>
+
 
 </android.support.design.widget.CoordinatorLayout>
