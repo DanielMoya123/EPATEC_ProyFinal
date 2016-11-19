@@ -49,9 +49,8 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void generateListContent() {
-        for(int i = 0; i < 55; i++) {
             data.add("This is row number " + i);
-        }
+
     }
 /*
     @Override
@@ -92,7 +91,6 @@ public class CartActivity extends AppCompatActivity {
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(layout, parent, false);
                 ViewHolder viewHolder = new ViewHolder();
-                viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.list_item_thumbnail);
                 viewHolder.title = (TextView) convertView.findViewById(R.id.list_item_text);
                 viewHolder.button = (Button) convertView.findViewById(R.id.list_item_btn);
                 convertView.setTag(viewHolder);
