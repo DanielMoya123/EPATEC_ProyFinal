@@ -80,7 +80,7 @@ public class CategoriesActivity extends AppCompatActivity {
         String id = Integer.toString(n);
         Category categoria = new Category(id,cat_name);
         SQLiteHandler handler = new SQLiteHandler(this);
-        handler.addCategory(categoria);
+        handler.addCategory(categoria,true);
     }
 
 }

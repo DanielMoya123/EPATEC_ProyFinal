@@ -139,7 +139,7 @@ public class UsersActivity extends AppCompatActivity {
         String id = Integer.toString(n);
         Users usuario = new Users(id,userName,userLast1,userLast2,userPhone,userIdentity,"usuario",userPassword,userBirth,office2,userAddress,"0");
         SQLiteHandler handler = new SQLiteHandler(this);
-        handler.addUser(usuario);
+        handler.addUser(usuario,true);
 
     }
 

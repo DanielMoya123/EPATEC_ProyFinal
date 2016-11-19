@@ -95,7 +95,7 @@ public class ProductsActivity extends AppCompatActivity {
         Products producto = new Products(id,taxable,"Cartago",productName,productCatId,1,100);
         SQLiteHandler handler = new SQLiteHandler(this);
 
-        handler.addProduct(producto);
+        handler.addProduct(producto,true);
     }
 
     public void onRadioButtonClicked(View view) {
