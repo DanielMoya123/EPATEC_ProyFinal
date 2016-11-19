@@ -148,8 +148,8 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     }
 
     public void addUser(Users urs) {
-        ContentValues values = new ContentValues();
 
+        ContentValues values = new ContentValues();
         values.put("_id", urs._id);
         values.put("_name",urs._name );
         values.put("_lastName1", urs._lastName1);
@@ -164,6 +164,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_residenceAddress", urs._residenceAddress);
 
         insertData(urs.table, values);
+        addUseRol(urs._id,urs.rol);
+        Pair<String, Users> p=new Pair("add",urs);
+
+        UpUser.add(p);
+
     }
 
     public void addProduct(Products pro) {
@@ -178,6 +183,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_amount",pro._amount);
 
         insertData(pro.table, values);
+
+        Pair<String, Products> p=new Pair("add",pro);
+
+        UpProduct.add(p);
+
     }
 
     public void addOrder(Orders ord) {
@@ -186,10 +196,17 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_clientId",ord._clientId);
         values.put("_sellerId",ord._sellerId);
         values.put("penalty",ord.penalty);
+        values.put("_office",ord._office);
         values.put("_creationTime",ord._creationTime);
 
         insertData("tabla", values);
+        for (int i=0; i<ord.pro.size();i++){
+            addOrderPro(ord._id,ord.pro.get(i).first,(int)ord.pro.get(i).second);
 
+        }
+        Pair<String, Orders> p=new Pair("add",ord);
+
+        UpOrder.add(p);
     }
 
     public void addCategory(Category cate){
@@ -198,6 +215,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         values.put("_id", cate._id);
         values.put("_description",cate._description);
         insertData(cate.table, values);
+
+        Pair<String, Category> p=new Pair("add",cate);
+
+        UpCate.add(p);
     }
 
     public void addRol(String id, String descrip){
